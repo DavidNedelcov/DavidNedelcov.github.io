@@ -520,6 +520,33 @@
         color: var(--gold);
       }
 
+      .rendering-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+      }
+
+      .rendering-gallery figure {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+      }
+
+      .rendering-gallery img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .rendering-gallery figcaption {
+        padding: 10px 12px;
+        color: var(--body);
+        font-size: 0.86rem;
+      }
+
       .skill-grid,
       .experience-grid,
       .evidence-grid {
@@ -672,7 +699,8 @@
         .experience-grid,
         .evidence-grid,
         .detail-card,
-        .metric-grid {
+        .metric-grid,
+        .rendering-gallery {
           grid-template-columns: 1fr;
         }
 
@@ -767,8 +795,8 @@
 
           <div class="case-grid">
             <a class="case-card" href="#foley-case" aria-label="Open Foley catheter case study">
-              <div class="case-media blank" aria-hidden="true">
-                <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
+              <div class="case-media">
+                <img src="assets/stop-valve-assembly.jpg" alt="CAD rendering of a stop-valve component for a catheter design project" />
               </div>
               <div class="case-body">
                 <span class="kicker">BMED 2310 | Device design</span>
@@ -981,6 +1009,16 @@
                   <div class="metric"><strong>25</strong><span>Concept sketches from five ideation prompts</span></div>
                   <div class="metric"><strong>13 N</strong><span>Removal-force threshold used for laceration-risk testing</span></div>
                   <div class="metric"><strong>3.2-12.3 N</strong><span>Measured prototype removal/detachment range that stayed below threshold</span></div>
+                </div>
+                <div class="rendering-gallery" aria-label="Stop-valve renderings">
+                  <figure>
+                    <img src="assets/stop-valve-assembly.jpg" alt="Angled CAD rendering of stop-valve component with tube connection" />
+                    <figcaption>Stop-valve assembly rendering showing the tube interface and body geometry.</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="assets/stop-valve-detail.jpg" alt="Close-up CAD rendering of threaded stop-valve detail" />
+                    <figcaption>Detail rendering highlighting threaded geometry and the valve body transition.</figcaption>
+                  </figure>
                 </div>
                 <ul class="detail-list">
                   <li>Primary user group: men over 70 with urinary retention after discharge; the DHF cites about 10% prevalence over age 70 and about 33% by age 80.</li>
