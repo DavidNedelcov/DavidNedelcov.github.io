@@ -301,6 +301,20 @@
         grid-template-rows: auto 1fr;
         min-height: 480px;
         overflow: hidden;
+        color: inherit;
+        text-decoration: none;
+        transition:
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          transform 160ms ease;
+      }
+
+      .case-card:hover,
+      .case-card:focus-visible {
+        border-color: rgba(0, 48, 87, 0.42);
+        box-shadow: 0 18px 48px rgba(0, 48, 87, 0.14);
+        transform: translateY(-2px);
+        outline: none;
       }
 
       .case-media {
@@ -393,6 +407,79 @@
       }
 
       .case-list li::marker {
+        color: var(--gold);
+      }
+
+      .case-cta {
+        margin-top: 16px;
+        color: var(--navy);
+        font-size: 0.88rem;
+        font-weight: 850;
+      }
+
+      .detail-stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .detail-card {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.35fr) minmax(0, 0.65fr);
+        gap: 26px;
+        padding: 26px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .detail-card h3 {
+        margin-bottom: 10px;
+        color: var(--navy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.55rem;
+        line-height: 1.12;
+      }
+
+      .detail-card p {
+        color: var(--body);
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin: 18px 0;
+      }
+
+      .metric {
+        min-height: 92px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--paper);
+      }
+
+      .metric strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--navy);
+        font-size: 1.24rem;
+      }
+
+      .metric span {
+        color: var(--body);
+        font-size: 0.9rem;
+      }
+
+      .detail-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--body);
+      }
+
+      .detail-list li::marker {
         color: var(--gold);
       }
 
@@ -512,7 +599,8 @@
         .case-grid,
         .skill-grid,
         .experience-grid,
-        .evidence-grid {
+        .evidence-grid,
+        .detail-card {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
@@ -540,7 +628,9 @@
         .case-grid,
         .skill-grid,
         .experience-grid,
-        .evidence-grid {
+        .evidence-grid,
+        .detail-card,
+        .metric-grid {
           grid-template-columns: 1fr;
         }
 
@@ -596,8 +686,8 @@
               <span>GPA with Faculty Honors</span>
             </div>
             <div class="stat">
-              <strong>5</strong>
-              <span>Selected engineering case studies</span>
+              <strong>8</strong>
+              <span>Clickable engineering case studies with project data</span>
             </div>
           </div>
         </div>
@@ -627,7 +717,7 @@
           </div>
 
           <div class="case-grid">
-            <article class="case-card">
+            <a class="case-card" href="#foley-case" aria-label="Open Foley catheter case study">
               <div class="case-media blank" aria-hidden="true">
                 <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
               </div>
@@ -640,14 +730,15 @@
                   needs, concept ideation, evaluation criteria, and prototype path.
                 </p>
                 <ul class="case-list">
-                  <li>Mapped physiological need and stakeholder value before solution design.</li>
-                  <li>Compared existing market solutions and unmet needs.</li>
-                  <li>Documented concept evaluation and prototype rationale in DHF format.</li>
+                  <li>Profiled men over 70 with urinary retention and catheter-removal trauma risk.</li>
+                  <li>Screened 25 concepts with Pugh and benefit-effort matrices.</li>
+                  <li>Tested prototypes against a 13 N removal-force tissue-trauma threshold.</li>
                 </ul>
+                <span class="case-cta">Read case study</span>
               </div>
-            </article>
+            </a>
 
-            <article class="case-card">
+            <a class="case-card" href="#fogarty-case" aria-label="Open Fogarty catheter uFMEA case study">
               <div class="case-media blank" aria-hidden="true">
                 <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
               </div>
@@ -660,14 +751,15 @@
                   situations, harm pathways, current controls, and mitigation needs.
                 </p>
                 <ul class="case-list">
-                  <li>Assessed severity, occurrence, and harm likelihood across use steps.</li>
-                  <li>Connected hazards to IFU controls, packaging controls, and inspection steps.</li>
-                  <li>Flagged cases requiring additional mitigation rather than treating risk as paperwork.</li>
+                  <li>Mapped six IFU task steps from prepare through withdraw.</li>
+                  <li>Analyzed 22 use-risk rows across severity and likelihood scales.</li>
+                  <li>Flagged 9 unacceptable risks and 9 additional mitigation needs.</li>
                 </ul>
+                <span class="case-cta">Read case study</span>
               </div>
-            </article>
+            </a>
 
-            <article class="case-card">
+            <a class="case-card" href="#syringe-case" aria-label="Open 5 mL syringe modeling case study">
               <div class="case-media">
                 <img src="assets/syringe-render.png" alt="CAD render from a 5 mL syringe project" />
               </div>
@@ -680,14 +772,15 @@
                   thinking and visual communication for a familiar clinical device.
                 </p>
                 <ul class="case-list">
-                  <li>Created clean visual CAD outputs suitable for technical review.</li>
-                  <li>Maintained project artifacts across PDF, image, and Fusion archive formats.</li>
-                  <li>Supports a portfolio story around device structure and design communication.</li>
+                  <li>Modeled barrel, plunger, 5 mL fluid volume, and hypodermic needle assembly.</li>
+                  <li>Specified polycarbonate, acrylic, water, steel, and PMMA components.</li>
+                  <li>Produced dimensioned technical drawings and rendered review views.</li>
                 </ul>
+                <span class="case-cta">Read case study</span>
               </div>
-            </article>
+            </a>
 
-            <article class="case-card">
+            <a class="case-card" href="#crank-case" aria-label="Open crank design case study">
               <div class="case-media">
                 <img src="assets/crank-render.png" alt="Rendered mechanical crank design project" />
               </div>
@@ -701,11 +794,12 @@
                 </p>
                 <ul class="case-list">
                   <li>Produced CAD renders from multiple customized views.</li>
-                  <li>Communicates geometry, part form, and material intent visually.</li>
-                  <li>Complements the medical-device work with broader mechanical design evidence.</li>
+                  <li>Documented a Fusion generative-design attempt and cloud-job failure.</li>
+                  <li>Complements medical-device work with mechanical design evidence.</li>
                 </ul>
+                <span class="case-cta">Read case study</span>
               </div>
-            </article>
+            </a>
           </div>
         </div>
       </section>
@@ -722,7 +816,7 @@
           </div>
 
           <div class="case-grid">
-            <article class="case-card">
+            <a class="case-card" href="#cochlear-case" aria-label="Open cochlear visualization case study">
               <div class="case-media blank" aria-hidden="true">
                 <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
               </div>
@@ -740,10 +834,11 @@
                   <li>Added multi-file comparison, overlay/parallel views, and clickable response plots.</li>
                   <li>Structured the code so future 3D or model updates can extend the tool.</li>
                 </ul>
+                <span class="case-cta">Read case study</span>
               </div>
-            </article>
+            </a>
 
-            <article class="case-card">
+            <a class="case-card" href="#sensor-case" aria-label="Open motion capture and sensor processing case study">
               <div class="case-media">
                 <img src="assets/epic-lab.png" alt="EPIC Lab Georgia Tech logo" />
               </div>
@@ -760,10 +855,11 @@
                   <li>Processed sensor-grid data into pressure, center-of-pressure, and blob features.</li>
                   <li>Worked on tools that connect raw experimental data to usable analysis outputs.</li>
                 </ul>
+                <span class="case-cta">Read case study</span>
               </div>
-            </article>
+            </a>
 
-            <article class="case-card">
+            <a class="case-card" href="#femur-case" aria-label="Open femoral bone compression simulation case study">
               <div class="case-media blank" aria-hidden="true">
                 <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
               </div>
@@ -776,14 +872,15 @@
                   cortical and trabecular response under a 2500 N walking load.
                 </p>
                 <ul class="case-list">
-                  <li>Computed cortical and trabecular elastic properties from compression and torsion data.</li>
-                  <li>Modeled concentric bone regions with physiological boundary conditions.</li>
-                  <li>Evaluated stress, displacement, and safety factor against simplified assumptions.</li>
+                  <li>Computed cortical and trabecular elastic properties from test data.</li>
+                  <li>Loaded a 30 mm by 120 mm concentric cylinder with 2500 N axial compression.</li>
+                  <li>Reported 7.704 MPa stress, 0.065 mm displacement, and 1.234 minimum safety factor.</li>
                 </ul>
+                <span class="case-cta">Read case study</span>
               </div>
-            </article>
+            </a>
 
-            <article class="case-card">
+            <a class="case-card" href="#asthma-case" aria-label="Open asthma sensor evidence case study">
               <div class="case-media blank" aria-hidden="true">
                 <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
               </div>
@@ -800,6 +897,223 @@
                   <li>Includes Phase 1, Phase 2, and Phase 3 presentation/report artifacts.</li>
                   <li>Useful for showing staged design development and evaluation criteria.</li>
                   <li>Ready to become a full case study once the exact final deliverable is selected.</li>
+                </ul>
+                <span class="case-cta">Read case study</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="case-studies">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Case Study Details</h2>
+            <p>
+              Each selected project is summarized with the evidence available from
+              local reports, code, CAD outputs, spreadsheets, and Drive search
+              results. Sensitive course and lab files are summarized rather than
+              republished directly.
+            </p>
+          </div>
+
+          <div class="detail-stack">
+            <article class="detail-card" id="foley-case">
+              <div>
+                <span class="kicker">BMED 2310 | DHF</span>
+                <h3>Foley catheter design history file</h3>
+                <p>
+                  Team 3, Foley's Fools, developed a design-history-file narrative for
+                  safer long-term indwelling catheter use after hospital discharge.
+                </p>
+              </div>
+              <div>
+                <div class="metric-grid" aria-label="Foley catheter project metrics">
+                  <div class="metric"><strong>25</strong><span>Concept sketches from five ideation prompts</span></div>
+                  <div class="metric"><strong>13 N</strong><span>Removal-force threshold used for laceration-risk testing</span></div>
+                  <div class="metric"><strong>3.2-12.3 N</strong><span>Measured prototype removal/detachment range that stayed below threshold</span></div>
+                </div>
+                <ul class="detail-list">
+                  <li>Primary user group: men over 70 with urinary retention after discharge; the DHF cites about 10% prevalence over age 70 and about 33% by age 80.</li>
+                  <li>Problem statement: reduce tissue lacerations from involuntary post-hospitalization Foley catheter removal.</li>
+                  <li>Concept screening used a Benefit-Effort Matrix and Pugh Matrix; concepts included magnetic breakaway drainage tubing, an extendable tube, a foldable retention cushion, urethral ring balloons, and soft insertion petals.</li>
+                  <li>Magnetic breakaway prototype: generation 0 detached at 3.2 N but disconnected too easily; generation 1 used a one-way valve and four magnets and detached at 6.9 N.</li>
+                  <li>Foldable retention cushion: generation 0 removed at 8.3 N; later geometry refinement reached 12.3 N while remaining below the 13 N threshold.</li>
+                  <li>Soft-petal insertion concept reduced glycerin carryover compared with baseline tests: less than 0.1 mL vs. 0.5 mL in one generation, and 0.2 mL vs. 0.6 mL in another.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="detail-card" id="fogarty-case">
+              <div>
+                <span class="kicker">Medical device risk | uFMEA</span>
+                <h3>Fogarty catheter use-FMEA</h3>
+                <p>
+                  A use-risk analysis translated instructions for use into task
+                  steps, failure modes, hazards, harms, current controls, and residual
+                  risk categories.
+                </p>
+              </div>
+              <div>
+                <div class="metric-grid" aria-label="Fogarty uFMEA metrics">
+                  <div class="metric"><strong>6</strong><span>IFU task steps: prepare, purge, inspect, place, inflate, withdraw</span></div>
+                  <div class="metric"><strong>22</strong><span>Analyzed use-risk rows in the spreadsheet</span></div>
+                  <div class="metric"><strong>9</strong><span>Unacceptable risks before added mitigation</span></div>
+                </div>
+                <ul class="detail-list">
+                  <li>Highest-severity hazards included intravascular air leading to air embolism, vessel perforation, dissection, rupture, and catheter separation.</li>
+                  <li>Unacceptable purge risks included failure to remove air from the balloon lumen, using air instead of sterile fluid or CO2, and failure to purge the thru-lumen.</li>
+                  <li>Placement and inflation risks included advancing against resistance, overinflating the balloon in the vessel, and continuing after balloon engagement with the vessel wall.</li>
+                  <li>Withdrawal risks included excessive pull force, failure to adjust balloon diameter to changing arterial diameter, and pulling against adherent material.</li>
+                  <li>Current controls included IFU warnings, sterile packaging, mandatory inspection, balloon-volume limits, heparinized saline purging, and contraindications for fibrotic, adherent, or calcified material.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="detail-card" id="syringe-case">
+              <div>
+                <span class="kicker">CAD + technical drawing</span>
+                <h3>5 mL syringe modeling project</h3>
+                <p>
+                  A component-level CAD and drawing package communicated a familiar
+                  clinical device as an engineered assembly with material and
+                  dimensional choices.
+                </p>
+              </div>
+              <div>
+                <div class="metric-grid" aria-label="Syringe CAD metrics">
+                  <div class="metric"><strong>5 mL</strong><span>Required fluid volume represented in the assembly</span></div>
+                  <div class="metric"><strong>4</strong><span>Drawing sheets for assembly, barrel, plunger, and needle</span></div>
+                  <div class="metric"><strong>88 mm</strong><span>Barrel length dimension shown in the technical drawing</span></div>
+                </div>
+                <ul class="detail-list">
+                  <li>Parts list included a 5 mL syringe body, plunger, fluid volume, and hypodermic needle.</li>
+                  <li>Materials were specified as polycarbonate/bronze for the syringe, clear acrylic for the plunger, water for the fluid, and steel/PMMA for the needle assembly.</li>
+                  <li>Drawings included section views, scale callouts, radii, diameters, angular features, and needle-detail geometry.</li>
+                  <li>The portfolio uses the rendered syringe image as a visual anchor because it is easier for reviewers to scan than a raw engineering drawing.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="detail-card" id="crank-case">
+              <div>
+                <span class="kicker">Mechanical design | Fusion</span>
+                <h3>Crank design and rendering</h3>
+                <p>
+                  Mechanical-design evidence showing CAD rendering, form
+                  communication, and a documented generative-design attempt.
+                </p>
+              </div>
+              <div>
+                <div class="metric-grid" aria-label="Crank project facts">
+                  <div class="metric"><strong>3</strong><span>Rendered custom-view images found locally</span></div>
+                  <div class="metric"><strong>May 1, 2026</strong><span>Fusion cloud study log timestamp</span></div>
+                  <div class="metric"><strong>1</strong><span>Generative structural-component study attempted</span></div>
+                </div>
+                <ul class="detail-list">
+                  <li>Available artifacts include multiple rendered crank views and a Fusion project log.</li>
+                  <li>The log records a generative model structural-component study that started successfully but ended with a Fusion cloud-job error.</li>
+                  <li>The portfolio presents this project as mechanical modeling and visual communication evidence, not as a completed validated analysis.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="detail-card" id="cochlear-case">
+              <div>
+                <span class="kicker">Meaud Lab | MATLAB GUI</span>
+                <h3>Cochlear micromechanics visualization tool</h3>
+                <p>
+                  A MATLAB post-processing package for organ of Corti micromechanics
+                  that converts saved simulation frequency sweeps into interactive
+                  visual analysis.
+                </p>
+              </div>
+              <div>
+                <div class="metric-grid" aria-label="Cochlear visualization metrics">
+                  <div class="metric"><strong>5</strong><span>User inputs: file, x-location, frequency, observation angle, grid resolution</span></div>
+                  <div class="metric"><strong>90 deg</strong><span>Radial displacement projection convention</span></div>
+                  <div class="metric"><strong>0 deg</strong><span>Transverse displacement projection convention</span></div>
+                </div>
+                <ul class="detail-list">
+                  <li>Main API: <code>computeOoCProjection(datafilename, xLocationCm, freqHz, observationAngleDeg)</code>.</li>
+                  <li>The tool selects nearest saved <code>xMesh</code> location and frequency, computes complex 2D radial/transverse vectors, samples the 2D displacement field, and projects motion onto an observation angle.</li>
+                  <li>GUI views include baseline/deformed OoC geometry, projected magnitude, projected phase relative to BM, landmark trajectories, saved structural frequency sweep, frequency sweep plots, displacement-vs-x plots, and point-response plots.</li>
+                  <li>Implementation replaced hard-coded filenames, x-locations, inline plotting, and monolithic script structure with selectable files and modular folders for I/O, mechanics, geometry, plotting, validation, tests, and examples.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="detail-card" id="sensor-case">
+              <div>
+                <span class="kicker">EPIC Lab VIP | Python + MATLAB</span>
+                <h3>Motion-capture and sensor processing workflows</h3>
+                <p>
+                  Research-tooling work for Vicon motion capture and insole sensor
+                  grids, linking raw experimental data to usable visual and numerical
+                  outputs.
+                </p>
+              </div>
+              <div>
+                <div class="metric-grid" aria-label="Sensor processing metrics">
+                  <div class="metric"><strong>31 x 11</strong><span>Fixed grid size used for each insole pressure map</span></div>
+                  <div class="metric"><strong>5.0</strong><span>Binary threshold used before morphology operations</span></div>
+                  <div class="metric"><strong>~24 hr</strong><span>README estimate for a full-subject Vicon processing run</span></div>
+                </div>
+                <ul class="detail-list">
+                  <li>Python pipeline parses headers like <code>Insole1_sensel_x_y</code>, maps values into two insole grids, and visualizes live sensor frames with fixed color scaling.</li>
+                  <li>Feature operations include mean pressure, peak pressure, linear center of pressure, nonlinear center of pressure, binary thresholding, 2x2 morphological opening, active-sensor counts, and connected-component blob counts.</li>
+                  <li>MATLAB AMP-with-GUI workflow targets MATLAB 2025a or later, Vicon Nexus, and a Windows workstation.</li>
+                  <li>Vicon workflow includes static skeleton calibration, optional functional joint calibration, marker gap/jump checks, rigid-body recovery, failed-trial cleanup, and final movement of processed trials into finished folders.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="detail-card" id="femur-case">
+              <div>
+                <span class="kicker">BMED 3410 | Fusion simulation</span>
+                <h3>Femoral bone compression simulation</h3>
+                <p>
+                  A simplified cortical/trabecular femoral shaft model tested whether
+                  a cylindrical bone representation could approximate elastic response
+                  under a walking-scale compressive load.
+                </p>
+              </div>
+              <div>
+                <div class="metric-grid" aria-label="Femur simulation metrics">
+                  <div class="metric"><strong>2500 N</strong><span>Applied axial compression load</span></div>
+                  <div class="metric"><strong>7.704 MPa</strong><span>Maximum von Mises stress</span></div>
+                  <div class="metric"><strong>0.065 mm</strong><span>Maximum total displacement</span></div>
+                </div>
+                <ul class="detail-list">
+                  <li>Geometry: 120 mm-tall concentric cylinder with 30 mm outer cortical diameter and 18 mm inner trabecular diameter.</li>
+                  <li>Material properties extracted from compression/torsion data: cortical Young's modulus 16.6 GPa, cortical shear modulus 6.39 GPa, cortical compressive yield strength 116.9 MPa.</li>
+                  <li>Trabecular properties: Young's modulus 0.93 GPa, shear modulus 0.387 GPa, compressive yield strength 6.1 MPa.</li>
+                  <li>Boundary conditions fixed the bottom surface and applied load normal to the top surface; minimum safety factor was 1.234.</li>
+                  <li>Limitations explicitly identified population bias, osteoporotic underrepresentation, isotropic linear-elastic assumptions, simplified cylindrical geometry, and missing bending/torsion loading modes.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="detail-card" id="asthma-case">
+              <div>
+                <span class="kicker">Drive evidence cluster</span>
+                <h3>Asthma sensor concept materials</h3>
+                <p>
+                  Drive search identified a phase-based sensor/design project cluster.
+                  The site lists the discoverable artifacts honestly until a final
+                  report or approved excerpts are selected for public sharing.
+                </p>
+              </div>
+              <div>
+                <div class="metric-grid" aria-label="Asthma sensor evidence metrics">
+                  <div class="metric"><strong>3</strong><span>Phase presentation/report stages found in Drive search</span></div>
+                  <div class="metric"><strong>11</strong><span>Related Drive artifacts visible in the search results</span></div>
+                  <div class="metric"><strong>Pending</strong><span>Needs exact final deliverable selection before stronger claims</span></div>
+                </div>
+                <ul class="detail-list">
+                  <li>Visible Drive results included Phase 1 Presentation, Phase 2 Presentation, Phase 3 Presentation, Phase 1 Progress Report, and Phase 3 Progress Report.</li>
+                  <li>Supporting files surfaced in the same search included Group References Phase 2, Evaluation Criteria, Established/Related Solutions, Phase 3 References, Sources Week 4, and a BMED2250 design documentation template.</li>
+                  <li>This is currently framed as an evidence cluster, not a completed public case study, because the exact final artifact and shareable content still need to be chosen.</li>
                 </ul>
               </div>
             </article>
