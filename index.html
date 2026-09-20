@@ -6,28 +6,38 @@
     <title>David Nedelcov | Biomedical Engineering Portfolio</title>
     <meta
       name="description"
-      content="Georgia Tech biomedical engineering portfolio for David Nedelcov: medical-device design, risk analysis, biomechanics, modeling, and research software."
+      content="David Nedelcov is a Georgia Tech biomedical engineering student working across medical-device design, biomechanics, MATLAB, Python, and research software."
     />
+    <meta name="theme-color" content="#003057" />
+    <link rel="canonical" href="https://davidnedelcov.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="David Nedelcov | Biomedical Engineering Portfolio" />
+    <meta
+      property="og:description"
+      content="Selected work in medical-device design, biomechanics, risk analysis, and research software."
+    />
+    <meta property="og:url" content="https://davidnedelcov.github.io/" />
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23003257'/%3E%3Cpath d='M16 43h32M20 35l8-7-8-7M34 21h12' fill='none' stroke='%23b3a369' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23003057'/%3E%3Cpath d='M16 43h32M20 35l8-7-8-7M34 21h12' fill='none' stroke='%23b3a369' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
     />
     <style>
       :root {
         --navy: #003057;
-        --navy-dark: #101923;
+        --navy-deep: #001f38;
         --gold: #b3a369;
-        --gold-soft: #efe7c8;
+        --gold-light: #e5d9a7;
         --ink: #17212b;
-        --body: #455260;
-        --muted: #737f8a;
-        --line: #d9dedf;
-        --paper: #f6f7f4;
+        --body: #44515e;
+        --muted: #697580;
+        --line: #d7dddf;
+        --paper: #f5f6f3;
         --white: #ffffff;
-        --steel: #e9eef1;
-        --rust: #8e5136;
-        --shadow: 0 24px 72px rgba(0, 48, 87, 0.12);
+        --teal: #267a75;
+        --rust: #8b4d35;
+        --focus: #18a0d5;
+        --shadow: 0 24px 64px rgba(0, 31, 56, 0.14);
       }
 
       * {
@@ -43,10 +53,9 @@
         min-width: 320px;
         background: var(--paper);
         color: var(--ink);
-        font-family:
-          ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Arial, sans-serif;
-        line-height: 1.55;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
       }
 
       a {
@@ -58,26 +67,56 @@
         max-width: 100%;
       }
 
+      code {
+        border-radius: 4px;
+        padding: 0.12em 0.34em;
+        background: #e9eef0;
+        color: var(--navy-deep);
+        font-size: 0.9em;
+      }
+
       .wrap {
-        width: min(1180px, calc(100% - 36px));
+        width: min(1160px, calc(100% - 40px));
         margin: 0 auto;
+      }
+
+      .skip-link {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 100;
+        padding: 10px 14px;
+        transform: translateY(-160%);
+        border-radius: 4px;
+        background: var(--white);
+        color: var(--navy);
+        font-weight: 800;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
       }
 
       .topbar {
         position: sticky;
         top: 0;
-        z-index: 20;
-        border-bottom: 1px solid rgba(217, 222, 223, 0.9);
-        background: rgba(246, 247, 244, 0.94);
-        backdrop-filter: blur(16px);
+        z-index: 30;
+        border-bottom: 1px solid rgba(215, 221, 223, 0.9);
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(14px);
       }
 
       .nav {
         display: flex;
+        min-height: 70px;
         align-items: center;
         justify-content: space-between;
-        gap: 22px;
-        padding: 16px 0;
+        gap: 24px;
       }
 
       .identity {
@@ -93,20 +132,20 @@
         height: 38px;
         flex: 0 0 auto;
         place-items: center;
-        border-radius: 7px;
+        border-radius: 6px;
         background: var(--navy);
-        color: var(--gold);
+        color: var(--gold-light);
         font-weight: 850;
       }
 
       .identity strong {
         display: block;
-        color: var(--navy-dark);
+        color: var(--navy-deep);
         font-size: 1rem;
         line-height: 1.1;
       }
 
-      .identity span {
+      .identity span span {
         display: block;
         color: var(--muted);
         font-size: 0.82rem;
@@ -114,50 +153,43 @@
 
       .nav-links {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 8px;
+        align-items: center;
+        gap: 6px;
       }
 
-      .nav-links a,
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 40px;
-        border: 1px solid var(--line);
-        border-radius: 7px;
-        padding: 9px 13px;
-        background: var(--white);
-        color: var(--navy-dark);
-        font-size: 0.94rem;
-        font-weight: 760;
+      .nav-links a {
+        min-height: 42px;
+        padding: 9px 11px;
+        border-radius: 5px;
+        color: var(--body);
+        font-size: 0.92rem;
+        font-weight: 750;
         text-decoration: none;
       }
 
-      .button.primary {
-        border-color: var(--navy);
+      .nav-links a:hover {
+        background: var(--paper);
+        color: var(--navy);
+      }
+
+      .hero-shell {
         background: var(--navy);
         color: var(--white);
       }
 
       .hero {
         display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
-        gap: 46px;
+        min-height: min(650px, calc(100svh - 110px));
+        grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+        gap: 64px;
         align-items: center;
-        padding: 70px 0 54px;
-      }
-
-      .hero > div,
-      .hero-card {
-        min-width: 0;
+        padding: 64px 0;
       }
 
       .eyebrow {
         margin: 0 0 14px;
-        color: var(--rust);
-        font-size: 0.84rem;
+        color: var(--gold-light);
+        font-size: 0.82rem;
         font-weight: 850;
         letter-spacing: 0;
         text-transform: uppercase;
@@ -171,468 +203,453 @@
       }
 
       h1 {
-        max-width: 760px;
-        margin-bottom: 20px;
-        color: var(--navy);
+        margin: 0 0 14px;
         font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(2.7rem, 4.9vw, 5.05rem);
-        font-weight: 700;
+        font-size: clamp(3.5rem, 7vw, 6.6rem);
+        line-height: 0.92;
         letter-spacing: 0;
-        line-height: 0.98;
-        text-wrap: balance;
       }
 
-      .lead {
+      .hero-role {
         max-width: 760px;
+        margin: 0 0 18px;
+        color: var(--white);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+        line-height: 1.16;
+      }
+
+      .hero-copy {
+        max-width: 690px;
         margin-bottom: 28px;
-        color: var(--body);
-        font-size: 1.12rem;
-      }
-
-      .profile-snapshot {
-        display: grid;
-        grid-template-columns: 78px minmax(0, 1fr);
-        gap: 14px;
-        align-items: center;
-        max-width: 560px;
-        margin: -6px 0 28px;
-      }
-
-      .profile-snapshot img {
-        width: 78px;
-        height: 78px;
-        border: 3px solid var(--gold);
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 10px 28px rgba(0, 48, 87, 0.16);
-      }
-
-      .profile-snapshot strong {
-        display: block;
-        color: var(--navy-dark);
-        font-size: 1rem;
-        line-height: 1.2;
-      }
-
-      .profile-snapshot span {
-        display: block;
-        color: var(--body);
-        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 1.08rem;
       }
 
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-bottom: 30px;
       }
 
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--line);
-        overflow: hidden;
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.44);
+        border-radius: 6px;
+        padding: 10px 15px;
+        color: var(--white);
+        font-size: 0.95rem;
+        font-weight: 800;
+        text-decoration: none;
       }
 
-      .stat {
-        min-height: 116px;
-        padding: 18px;
+      .button.primary {
+        border-color: var(--gold-light);
+        background: var(--gold-light);
+        color: var(--navy-deep);
+      }
+
+      .button:hover {
+        border-color: var(--white);
         background: var(--white);
+        color: var(--navy-deep);
       }
 
-      .stat strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--navy);
-        font-size: 1.45rem;
+      .hero-profile {
+        position: relative;
+        width: min(100%, 370px);
+        justify-self: end;
       }
 
-      .stat span {
-        color: var(--muted);
-        font-size: 0.92rem;
+      .hero-profile::before {
+        position: absolute;
+        inset: 18px -18px -18px 18px;
+        border: 1px solid rgba(229, 217, 167, 0.62);
+        content: "";
       }
 
-      .hero-card,
-      .case-card,
-      .skill-card,
-      .experience-card,
-      .evidence-card,
-      .contact-panel,
-      .note-panel {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--white);
-      }
-
-      .hero-card {
-        box-shadow: var(--shadow);
-        overflow: hidden;
-      }
-
-      .hero-card-image {
-        display: grid;
-        min-height: 250px;
-        place-items: center;
-        background: #459676;
-      }
-
-      .hero-card-image img {
+      .hero-profile img {
+        position: relative;
         width: 100%;
-        height: 330px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border: 1px solid rgba(255, 255, 255, 0.24);
         object-fit: cover;
+        box-shadow: var(--shadow);
       }
 
-      .hero-card-body {
-        padding: 22px;
+      .credential-band {
+        border-bottom: 1px solid var(--line);
+        background: var(--white);
       }
 
-      .hero-card-body strong {
+      .credentials {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .credential {
+        min-width: 0;
+        padding: 20px 24px 20px 0;
+      }
+
+      .credential + .credential {
+        border-left: 1px solid var(--line);
+        padding-left: 24px;
+      }
+
+      .credential strong {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 2px;
         color: var(--navy);
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
 
-      .hero-card-body p {
-        margin-bottom: 0;
-        color: var(--body);
+      .credential span {
+        color: var(--muted);
+        font-size: 0.88rem;
       }
 
       section {
-        padding: 58px 0;
-        border-top: 1px solid var(--line);
+        padding: 76px 0;
+      }
+
+      section[id] {
+        scroll-margin-top: 80px;
       }
 
       .section-head {
         display: grid;
-        grid-template-columns: minmax(240px, 0.4fr) minmax(0, 0.6fr);
-        gap: 34px;
+        grid-template-columns: minmax(240px, 0.42fr) minmax(0, 0.58fr);
+        gap: 48px;
         align-items: end;
-        margin-bottom: 26px;
+        margin-bottom: 36px;
       }
 
       h2 {
         margin-bottom: 0;
         color: var(--navy);
         font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(1.85rem, 3.4vw, 3.1rem);
-        line-height: 1.04;
+        font-size: clamp(2.15rem, 4.2vw, 3.7rem);
+        line-height: 1;
+        letter-spacing: 0;
       }
 
       .section-head p {
         margin-bottom: 0;
         color: var(--body);
+        font-size: 1.02rem;
       }
 
-      .case-grid {
+      .project-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .project {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .project summary {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+        grid-template-columns: 66px minmax(0, 1fr) minmax(280px, 0.68fr);
+        gap: 28px;
+        align-items: center;
+        padding: 30px 0;
+        cursor: pointer;
+        list-style: none;
       }
 
-      .case-card {
-        display: grid;
-        grid-template-rows: auto 1fr;
-        min-height: 480px;
-        overflow: hidden;
-        color: inherit;
-        text-decoration: none;
-        transition:
-          border-color 160ms ease,
-          box-shadow 160ms ease,
-          transform 160ms ease;
+      .project summary::-webkit-details-marker {
+        display: none;
       }
 
-      .case-card:hover,
-      .case-card:focus-visible {
-        border-color: rgba(0, 48, 87, 0.42);
-        box-shadow: 0 18px 48px rgba(0, 48, 87, 0.14);
-        transform: translateY(-2px);
-        outline: none;
+      .project summary:hover .project-title,
+      .project summary:focus-visible .project-title {
+        color: var(--teal);
       }
 
-      .case-media {
-        min-height: 215px;
-        background:
-          linear-gradient(135deg, rgba(0, 48, 87, 0.94), rgba(16, 25, 35, 0.94)),
-          var(--navy);
+      .project-index {
+        align-self: start;
+        color: var(--rust);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
       }
 
-      .case-media img {
-        width: 100%;
-        height: 260px;
-        object-fit: cover;
-      }
-
-      .case-media.blank {
-        display: grid;
-        place-items: center;
-        padding: 28px;
-        color: var(--gold);
-      }
-
-      .schematic {
-        width: min(360px, 82%);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        padding: 18px;
-      }
-
-      .schematic-line {
-        height: 12px;
-        margin: 14px 0;
-        border-radius: 999px;
-        background: linear-gradient(90deg, var(--gold), #f3efe0);
-      }
-
-      .schematic-line:nth-child(2) {
-        width: 72%;
-      }
-
-      .schematic-line:nth-child(3) {
-        width: 88%;
-      }
-
-      .case-body {
-        display: flex;
-        flex-direction: column;
-        padding: 22px;
-      }
-
-      .kicker {
-        display: inline-flex;
-        width: fit-content;
-        margin-bottom: 14px;
-        border-radius: 999px;
-        padding: 5px 9px;
-        background: var(--steel);
-        color: var(--navy);
+      .project-label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--rust);
         font-size: 0.76rem;
         font-weight: 850;
         text-transform: uppercase;
       }
 
-      .case-body h3,
-      .skill-card h3,
-      .experience-card h3,
-      .evidence-card h3 {
-        margin-bottom: 10px;
-        color: var(--navy-dark);
-        font-size: 1.2rem;
-        line-height: 1.24;
-      }
-
-      .case-body p,
-      .skill-card p,
-      .experience-card p,
-      .evidence-card p {
-        color: var(--body);
-        font-size: 0.97rem;
-      }
-
-      .case-list {
-        display: grid;
-        gap: 8px;
-        margin: auto 0 0;
-        padding: 18px 0 0;
-        color: var(--body);
-        font-size: 0.95rem;
-        list-style-position: inside;
-      }
-
-      .case-list li::marker {
-        color: var(--gold);
-      }
-
-      .case-cta {
-        margin-top: 16px;
+      .project-title {
+        display: block;
+        margin-bottom: 9px;
         color: var(--navy);
-        font-size: 0.88rem;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.45rem, 2.4vw, 2rem);
+        font-weight: 700;
+        line-height: 1.1;
+      }
+
+      .project-summary {
+        display: block;
+        max-width: 660px;
+        color: var(--body);
+        font-size: 0.96rem;
+      }
+
+      .open-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 14px;
+        color: var(--navy);
+        font-size: 0.84rem;
         font-weight: 850;
       }
 
-      .detail-stack {
-        display: grid;
-        gap: 18px;
+      .open-label::after {
+        content: "+";
+        font-size: 1.15rem;
+        line-height: 1;
       }
 
-      .detail-card {
-        display: grid;
-        grid-template-columns: minmax(220px, 0.35fr) minmax(0, 0.65fr);
-        gap: 26px;
-        padding: 26px;
+      .project[open] .open-label::after {
+        content: "-";
+      }
+
+      .project-visual {
+        min-height: 196px;
+        overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 8px;
         background: var(--white);
       }
 
-      .detail-card h3 {
-        margin-bottom: 10px;
-        color: var(--navy);
+      .project-visual img {
+        width: 100%;
+        height: 196px;
+        object-fit: cover;
+      }
+
+      .data-visual {
+        display: grid;
+        min-height: 196px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+        background: var(--navy-deep);
+        color: var(--white);
+      }
+
+      .data-point {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        justify-content: center;
+        padding: 18px;
+      }
+
+      .data-point + .data-point {
+        border-left: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      .data-point strong {
+        color: var(--gold-light);
         font-family: Georgia, "Times New Roman", serif;
-        font-size: 1.55rem;
-        line-height: 1.12;
+        font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+        line-height: 1.05;
       }
 
-      .detail-card p {
-        color: var(--body);
+      .data-point span {
+        margin-top: 7px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.78rem;
+        line-height: 1.35;
       }
 
-      .metric-grid {
+      .project-details {
+        display: grid;
+        grid-template-columns: 66px minmax(0, 1fr);
+        gap: 28px;
+        padding: 0 0 36px;
+      }
+
+      .detail-content {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-        margin: 18px 0;
+        gap: 28px;
+        padding: 28px;
+        border-left: 4px solid var(--gold);
+        background: var(--white);
       }
 
-      .metric {
-        min-height: 92px;
-        padding: 14px;
-        border: 1px solid var(--line);
-        border-radius: 7px;
-        background: var(--paper);
+      .detail-block h3 {
+        margin-bottom: 8px;
+        color: var(--navy-deep);
+        font-size: 1rem;
+        line-height: 1.3;
       }
 
-      .metric strong {
-        display: block;
-        margin-bottom: 4px;
-        color: var(--navy);
-        font-size: 1.24rem;
-      }
-
-      .metric span {
+      .detail-block p,
+      .detail-block ul {
+        margin-bottom: 0;
         color: var(--body);
-        font-size: 0.9rem;
+        font-size: 0.93rem;
       }
 
-      .detail-list {
+      .detail-block ul {
         display: grid;
-        gap: 8px;
-        margin: 0;
+        gap: 7px;
         padding-left: 18px;
-        color: var(--body);
       }
 
-      .detail-list li::marker {
+      .detail-block li::marker {
         color: var(--gold);
       }
 
       .rendering-gallery {
+        grid-column: 1 / -1;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin: 18px 0;
+        gap: 14px;
+        padding-top: 4px;
       }
 
       .rendering-gallery figure {
         margin: 0;
-        overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 8px;
         background: var(--paper);
       }
 
       .rendering-gallery img {
         width: 100%;
+        height: auto;
         aspect-ratio: 16 / 9;
         object-fit: cover;
       }
 
       .rendering-gallery figcaption {
         padding: 10px 12px;
-        color: var(--body);
-        font-size: 0.86rem;
+        color: var(--muted);
+        font-size: 0.82rem;
       }
 
-      .skill-grid,
-      .experience-grid,
-      .evidence-grid {
+      .about-section {
+        border-top: 1px solid var(--line);
+        background: var(--white);
+      }
+
+      .about-grid {
         display: grid;
-        gap: 16px;
+        grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+        gap: 64px;
       }
 
-      .skill-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+      .about-intro p {
+        margin-top: 18px;
+        color: var(--body);
       }
 
-      .experience-grid,
-      .evidence-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .skill-card,
-      .experience-card,
-      .evidence-card {
-        padding: 22px;
-      }
-
-      .skill-card {
-        min-height: 220px;
-      }
-
-      .experience-card .meta {
-        margin-bottom: 12px;
+      .about-intro .eyebrow {
+        margin-top: 0;
         color: var(--rust);
-        font-size: 0.84rem;
+      }
+
+      .experience-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .experience-item {
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 20px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .experience-date {
+        color: var(--rust);
+        font-size: 0.78rem;
         font-weight: 850;
         text-transform: uppercase;
       }
 
-      .contact-band {
-        display: grid;
-        grid-template-columns: minmax(0, 0.62fr) minmax(280px, 0.38fr);
-        gap: 18px;
-        align-items: stretch;
+      .experience-item h3 {
+        margin-bottom: 4px;
+        color: var(--navy);
+        font-size: 1.08rem;
+        line-height: 1.3;
       }
 
-      .contact-panel {
-        padding: 28px;
-        background: var(--navy);
+      .experience-item p {
+        margin-bottom: 0;
+        color: var(--body);
+        font-size: 0.93rem;
+      }
+
+      .capabilities {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 26px;
+      }
+
+      .capabilities span {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: var(--paper);
+        color: var(--body);
+        font-size: 0.82rem;
+        font-weight: 720;
+      }
+
+      .contact-section {
+        border-top: 1px solid var(--line);
+        background: var(--navy-deep);
         color: var(--white);
       }
 
-      .contact-panel h2 {
+      .contact-section .eyebrow {
+        color: var(--gold-light);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 48px;
+        align-items: end;
+      }
+
+      .contact-grid h2 {
         color: var(--white);
       }
 
-      .contact-panel p {
-        color: rgba(255, 255, 255, 0.78);
+      .contact-grid p {
+        max-width: 720px;
+        margin: 18px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 1.05rem;
       }
 
-      .contact-list {
-        display: grid;
+      .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
         gap: 10px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .contact-list a {
-        color: var(--white);
-        font-weight: 800;
-        text-decoration-color: rgba(255, 255, 255, 0.34);
-        text-underline-offset: 4px;
-      }
-
-      .note-panel {
-        padding: 24px;
-        border-color: #d6c78c;
-        background: #fff9df;
-        color: #463c18;
-      }
-
-      .note-panel strong {
-        display: block;
-        margin-bottom: 8px;
       }
 
       footer {
-        padding: 32px 0 42px;
-        background: var(--navy-dark);
-        color: var(--white);
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 24px 0;
+        background: var(--navy-deep);
+        color: rgba(255, 255, 255, 0.62);
       }
 
       footer .wrap {
@@ -642,692 +659,668 @@
         gap: 20px;
       }
 
-      footer span,
       footer a {
-        color: rgba(255, 255, 255, 0.76);
+        font-weight: 750;
+        text-underline-offset: 3px;
       }
 
-      footer a {
-        font-weight: 800;
-        text-decoration-color: rgba(255, 255, 255, 0.32);
-        text-underline-offset: 4px;
-      }
+      @media (max-width: 920px) {
+        .hero {
+          grid-template-columns: minmax(0, 1fr) minmax(220px, 0.46fr);
+          gap: 36px;
+        }
 
-      @media (max-width: 960px) {
-        .hero,
-        .section-head,
-        .contact-band {
+        .credentials {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .credential:nth-child(3) {
+          border-left: 0;
+        }
+
+        .credential:nth-child(n + 3) {
+          border-top: 1px solid var(--line);
+        }
+
+        .project summary {
+          grid-template-columns: 50px minmax(0, 1fr);
+        }
+
+        .project-visual {
+          grid-column: 2;
+        }
+
+        .project-details {
+          grid-template-columns: 50px minmax(0, 1fr);
+        }
+
+        .detail-content {
           grid-template-columns: 1fr;
         }
 
-        .case-grid,
-        .skill-grid,
-        .experience-grid,
-        .evidence-grid,
-        .detail-card {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
         }
       }
 
       @media (max-width: 680px) {
         .wrap {
-          width: min(100% - 28px, 1180px);
+          width: min(100% - 28px, 1160px);
         }
 
-        .nav,
-        footer .wrap {
+        .nav {
+          min-height: auto;
           align-items: flex-start;
           flex-direction: column;
+          gap: 10px;
+          padding: 12px 0;
         }
 
         .nav-links {
-          justify-content: flex-start;
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .nav-links a {
+          min-height: 38px;
+          padding: 7px 6px;
+          font-size: 0.86rem;
         }
 
         .hero {
-          padding: 42px 0 46px;
+          min-height: 0;
+          grid-template-columns: 1fr;
+          gap: 22px;
+          padding: 34px 0 38px;
         }
 
         h1 {
-          font-size: 2.45rem;
-          line-height: 1.04;
+          font-size: clamp(3rem, 15.5vw, 3.8rem);
         }
 
-        .stats,
-        .case-grid,
-        .skill-grid,
-        .experience-grid,
-        .evidence-grid,
-        .detail-card,
-        .metric-grid,
+        .hero-role {
+          font-size: 1.3rem;
+        }
+
+        .hero-copy {
+          margin-bottom: 22px;
+          font-size: 0.98rem;
+        }
+
+        .hero-profile {
+          width: 170px;
+          justify-self: start;
+        }
+
+        .hero-profile::before {
+          inset: 10px -10px -10px 10px;
+        }
+
+        .credentials {
+          grid-template-columns: 1fr;
+        }
+
+        .credential,
+        .credential + .credential,
+        .credential:nth-child(3) {
+          border-top: 1px solid var(--line);
+          border-left: 0;
+          padding: 15px 0;
+        }
+
+        .credential:first-child {
+          border-top: 0;
+        }
+
+        section {
+          padding: 58px 0;
+        }
+
+        .section-head {
+          grid-template-columns: 1fr;
+          gap: 14px;
+          margin-bottom: 26px;
+        }
+
+        .project summary {
+          grid-template-columns: 1fr;
+          gap: 14px;
+          padding: 28px 0;
+        }
+
+        .project-index {
+          font-size: 1rem;
+        }
+
+        .project-visual {
+          grid-column: 1;
+        }
+
+        .project-details {
+          grid-template-columns: 1fr;
+          gap: 0;
+          padding-bottom: 28px;
+        }
+
+        .detail-content {
+          padding: 22px;
+        }
+
         .rendering-gallery {
           grid-template-columns: 1fr;
         }
 
-        .hero-card-image img,
-        .case-media img {
-          height: 230px;
+        .experience-item {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          align-items: start;
+        }
+
+        .contact-links {
+          justify-content: flex-start;
+        }
+
+        footer .wrap {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .hero-profile {
+          width: 100px;
         }
       }
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
     <header class="topbar">
       <nav class="wrap nav" aria-label="Portfolio navigation">
         <a class="identity" href="#top" aria-label="David Nedelcov portfolio home">
           <span class="mark" aria-hidden="true">DN</span>
           <span>
             <strong>David Nedelcov</strong>
-            <span>Georgia Tech biomedical engineering</span>
+            <span>Biomedical engineering</span>
           </span>
         </a>
         <div class="nav-links">
-          <a href="#projects">Projects</a>
-          <a href="#research">Research</a>
-          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+          <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
     </header>
 
-    <main id="top">
-      <div class="wrap hero">
-        <div>
-          <p class="eyebrow">Biomedical engineering + medical-device software</p>
-          <h1>Design controls, biomechanics, and research tools.</h1>
-          <p class="lead">
-            I am a Georgia Tech biomedical engineering student building across
-            medical-device design, use-risk analysis, biomechanics, and MATLAB/Python
-            tooling for research workflows. This portfolio collects the work that
-            best shows my engineering judgment: define the need, model the system,
-            verify the risk, and make the result usable.
-          </p>
-          <div class="profile-snapshot" aria-label="David Nedelcov profile photo">
-            <img src="assets/david-nedelcov.jpg" alt="Portrait of David Nedelcov" />
-            <div>
-              <strong>David Nedelcov</strong>
-              <span>Biomedical engineering student at Georgia Tech</span>
+    <main id="main">
+      <div class="hero-shell" id="top">
+        <div class="wrap hero">
+          <div>
+            <p class="eyebrow">Georgia Tech Biomedical Engineering</p>
+            <h1>David Nedelcov</h1>
+            <p class="hero-role">Medical-device design, biomechanics, and research software.</p>
+            <p class="hero-copy">
+              I turn clinical needs and experimental data into tested concepts,
+              simulations, and practical research tools.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#work">Explore projects</a>
+              <a class="button" href="mailto:dnedelcov3@gatech.edu">Email me</a>
             </div>
           </div>
-          <div class="hero-actions">
-            <a class="button primary" href="#projects">View selected projects</a>
-            <a class="button" href="mailto:dnedelcov3@gatech.edu">Contact David</a>
-          </div>
-          <div class="stats" aria-label="Portfolio summary">
-            <div class="stat">
-              <strong>2027</strong>
-              <span>Expected B.S. Biomedical Engineering graduation</span>
-            </div>
-            <div class="stat">
-              <strong>3.67</strong>
-              <span>GPA with Faculty Honors</span>
-            </div>
-            <div class="stat">
-              <strong>8</strong>
-              <span>Clickable engineering case studies with project data</span>
-            </div>
+          <div class="hero-profile">
+            <img
+              src="assets/david-nedelcov.jpg"
+              width="900"
+              height="900"
+              alt="David Nedelcov"
+              decoding="async"
+            />
           </div>
         </div>
-
-        <aside class="hero-card" aria-label="Featured design artifact">
-          <div class="hero-card-image">
-            <img src="assets/syringe-render.png" alt="CAD rendering of a syringe-style medical-device project" />
-          </div>
-          <div class="hero-card-body">
-            <strong>Portfolio focus</strong>
-            <p>
-              Biomedical design is presented with evidence: DHF excerpts, FMEA work,
-              CAD artifacts, simulation results, code, and research-interface design.
-            </p>
-          </div>
-        </aside>
       </div>
 
-      <section id="projects">
+      <div class="credential-band" aria-label="Education summary">
+        <div class="wrap credentials">
+          <div class="credential">
+            <strong>B.S. Biomedical Engineering</strong>
+            <span>Georgia Institute of Technology</span>
+          </div>
+          <div class="credential">
+            <strong>May 2027</strong>
+            <span>Expected graduation</span>
+          </div>
+          <div class="credential">
+            <strong>3.67 GPA</strong>
+            <span>Faculty Honors</span>
+          </div>
+          <div class="credential">
+            <strong>Atlanta, Georgia</strong>
+            <span>Open to engineering opportunities</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="work">
         <div class="wrap">
           <div class="section-head">
-            <h2>Selected Case Studies</h2>
+            <h2>Selected work</h2>
             <p>
-              These projects cover the strongest engineering signal: design
-              documentation, risk analysis, computation, and usable software.
+              Six projects demonstrating design controls, human-factors risk analysis,
+              biomechanics, CAD, and research computing. Open any study for the methods,
+              results, and limits behind the headline.
             </p>
           </div>
 
-          <div class="case-grid">
-            <a class="case-card" href="#foley-case" aria-label="Open Foley catheter case study">
-              <div class="case-media">
-                <img src="assets/stop-valve-assembly.jpg" alt="CAD rendering of a stop-valve component for a catheter design project" />
+          <div class="project-list">
+            <details class="project" id="foley">
+              <summary>
+                <span class="project-index">01</span>
+                <span>
+                  <span class="project-label">BMED 2310 | Team device design</span>
+                  <span class="project-title">Safer Foley catheter removal</span>
+                  <span class="project-summary">
+                    A design-history-file project addressing tissue injury from accidental
+                    post-discharge catheter removal through concept screening and prototype testing.
+                  </span>
+                  <span class="open-label">View evidence</span>
+                </span>
+                <span class="project-visual">
+                  <img
+                    src="assets/stop-valve-assembly.jpg"
+                    width="1800"
+                    height="971"
+                    alt="CAD rendering of the catheter stop-valve assembly"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              </summary>
+              <div class="project-details">
+                <span aria-hidden="true"></span>
+                <div class="detail-content">
+                  <div class="detail-block">
+                    <h3>Design challenge</h3>
+                    <p>
+                      Reduce urethral tissue trauma when a Foley catheter is pulled before
+                      clinical removal, with men over 70 identified as the primary user group.
+                    </p>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Process</h3>
+                    <ul>
+                      <li>Generated 25 concepts and screened them with Benefit-Effort and Pugh matrices.</li>
+                      <li>Prototyped breakaway drainage and foldable retention concepts.</li>
+                      <li>Used a 13 N removal-force threshold to guide iteration.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Results and scope</h3>
+                    <ul>
+                      <li>Breakaway prototypes detached at 3.2 N and 6.9 N.</li>
+                      <li>Retention-cushion iterations measured 8.3 N to 12.3 N.</li>
+                      <li>Team results are summarized from the shared design history file.</li>
+                    </ul>
+                  </div>
+                  <div class="rendering-gallery" aria-label="Stop-valve renderings">
+                    <figure>
+                      <img
+                        src="assets/stop-valve-assembly.jpg"
+                        width="1800"
+                        height="971"
+                        alt="Angled CAD rendering of the stop-valve assembly and tube connection"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Assembly view showing the stop-valve body and tube interface.</figcaption>
+                    </figure>
+                    <figure>
+                      <img
+                        src="assets/stop-valve-detail.jpg"
+                        width="1800"
+                        height="950"
+                        alt="Close-up CAD rendering of the threaded stop-valve detail"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Detail view used to review the threaded connection geometry.</figcaption>
+                    </figure>
+                  </div>
+                </div>
               </div>
-              <div class="case-body">
-                <span class="kicker">BMED 2310 | Device design</span>
-                <h3>Foley catheter design history file</h3>
-                <p>
-                  Team design-history documentation for a urinary-retention device
-                  concept. The work traces the clinical need, market gaps, user
-                  needs, concept ideation, evaluation criteria, and prototype path.
-                </p>
-                <ul class="case-list">
-                  <li>Profiled men over 70 with urinary retention and catheter-removal trauma risk.</li>
-                  <li>Screened 25 concepts with Pugh and benefit-effort matrices.</li>
-                  <li>Tested prototypes against a 13 N removal-force tissue-trauma threshold.</li>
-                </ul>
-                <span class="case-cta">Read case study</span>
-              </div>
-            </a>
+            </details>
 
-            <a class="case-card" href="#fogarty-case" aria-label="Open Fogarty catheter uFMEA case study">
-              <div class="case-media blank" aria-hidden="true">
-                <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
+            <details class="project" id="cochlear">
+              <summary>
+                <span class="project-index">02</span>
+                <span>
+                  <span class="project-label">Meaud Lab | MATLAB research tool</span>
+                  <span class="project-title">Cochlear micromechanics visualization</span>
+                  <span class="project-summary">
+                    A modular interface that turns complex organ of Corti simulation data into
+                    selectable geometry, motion, phase, and frequency-response views.
+                  </span>
+                  <span class="open-label">View evidence</span>
+                </span>
+                <span class="project-visual data-visual" aria-label="Five inputs, zero degree transverse view, ninety degree radial view">
+                  <span class="data-point"><strong>5</strong><span>selectable inputs</span></span>
+                  <span class="data-point"><strong>0 deg</strong><span>transverse projection</span></span>
+                  <span class="data-point"><strong>90 deg</strong><span>radial projection</span></span>
+                </span>
+              </summary>
+              <div class="project-details">
+                <span aria-hidden="true"></span>
+                <div class="detail-content">
+                  <div class="detail-block">
+                    <h3>Research need</h3>
+                    <p>
+                      Replace hard-coded post-processing scripts with an interface that lets
+                      researchers inspect saved frequency sweeps without rewriting plots.
+                    </p>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Implementation</h3>
+                    <ul>
+                      <li>Built file, x-location, frequency, angle, and grid-resolution inputs.</li>
+                      <li>Modularized I/O, mechanics, geometry, plotting, validation, tests, and examples.</li>
+                      <li>Used <code>computeOoCProjection(...)</code> as the main analysis API.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Output</h3>
+                    <ul>
+                      <li>Baseline and deformed geometry with projected magnitude and phase.</li>
+                      <li>Landmark trajectories, frequency sweeps, displacement-vs-x, and point responses.</li>
+                      <li>Nearest saved mesh location and frequency selected transparently.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div class="case-body">
-                <span class="kicker">Medical device risk</span>
-                <h3>Fogarty catheter use-FMEA</h3>
-                <p>
-                  Use-related risk analysis for Fogarty catheter preparation and
-                  insertion steps, connecting user errors to hazards, hazardous
-                  situations, harm pathways, current controls, and mitigation needs.
-                </p>
-                <ul class="case-list">
-                  <li>Mapped six IFU task steps from prepare through withdraw.</li>
-                  <li>Analyzed 22 use-risk rows across severity and likelihood scales.</li>
-                  <li>Flagged 9 unacceptable risks and 9 additional mitigation needs.</li>
-                </ul>
-                <span class="case-cta">Read case study</span>
-              </div>
-            </a>
+            </details>
 
-            <a class="case-card" href="#syringe-case" aria-label="Open 5 mL syringe modeling case study">
-              <div class="case-media">
-                <img src="assets/syringe-render.png" alt="CAD render from a 5 mL syringe project" />
+            <details class="project" id="sensor-processing">
+              <summary>
+                <span class="project-index">03</span>
+                <span>
+                  <span class="project-label">EPIC Lab VIP | Python + MATLAB</span>
+                  <span class="project-title">Motion-capture and insole sensor workflows</span>
+                  <span class="project-summary">
+                    Processing tools that move Vicon and pressure-sensor data from raw acquisition
+                    toward repeatable quality checks, features, and visual outputs.
+                  </span>
+                  <span class="open-label">View evidence</span>
+                </span>
+                <span class="project-visual data-visual" aria-label="Thirty-one by eleven sensor grid, five point zero threshold, approximately twenty-four hour full-subject run">
+                  <span class="data-point"><strong>31 x 11</strong><span>insole grid</span></span>
+                  <span class="data-point"><strong>5.0</strong><span>binary threshold</span></span>
+                  <span class="data-point"><strong>~24 hr</strong><span>full-subject run</span></span>
+                </span>
+              </summary>
+              <div class="project-details">
+                <span aria-hidden="true"></span>
+                <div class="detail-content">
+                  <div class="detail-block">
+                    <h3>Data pipeline</h3>
+                    <p>
+                      Parsed named sensel columns into two fixed pressure maps and created
+                      consistent frame-by-frame visualizations with controlled color scaling.
+                    </p>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Computed features</h3>
+                    <ul>
+                      <li>Mean and peak pressure.</li>
+                      <li>Linear and nonlinear center of pressure.</li>
+                      <li>Active-sensor and connected-component counts after morphology.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Workflow context</h3>
+                    <ul>
+                      <li>Reviewed static and functional calibration steps in Vicon Nexus.</li>
+                      <li>Included marker gap, jump, and rigid-body recovery checks.</li>
+                      <li>Documented the long runtime as a target for future automation work.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div class="case-body">
-                <span class="kicker">CAD + design documentation</span>
-                <h3>5 mL syringe modeling project</h3>
-                <p>
-                  A device-design project with CAD artifacts and documentation
-                  associated with BMED 2310 materials. It demonstrates component-level
-                  thinking and visual communication for a familiar clinical device.
-                </p>
-                <ul class="case-list">
-                  <li>Modeled barrel, plunger, 5 mL fluid volume, and hypodermic needle assembly.</li>
-                  <li>Specified polycarbonate, acrylic, water, steel, and PMMA components.</li>
-                  <li>Produced dimensioned technical drawings and rendered review views.</li>
-                </ul>
-                <span class="case-cta">Read case study</span>
-              </div>
-            </a>
+            </details>
 
-            <a class="case-card" href="#crank-case" aria-label="Open crank design case study">
-              <div class="case-media">
-                <img src="assets/crank-render.png" alt="Rendered mechanical crank design project" />
+            <details class="project" id="fogarty">
+              <summary>
+                <span class="project-index">04</span>
+                <span>
+                  <span class="project-label">Medical-device risk analysis</span>
+                  <span class="project-title">Fogarty catheter use-FMEA</span>
+                  <span class="project-summary">
+                    An instructions-for-use analysis connecting user actions to foreseeable
+                    errors, hazardous situations, harms, controls, and mitigation priorities.
+                  </span>
+                  <span class="open-label">View evidence</span>
+                </span>
+                <span class="project-visual data-visual" aria-label="Six task steps, twenty-two risk rows, nine unacceptable risks">
+                  <span class="data-point"><strong>6</strong><span>task steps</span></span>
+                  <span class="data-point"><strong>22</strong><span>risk rows</span></span>
+                  <span class="data-point"><strong>9</strong><span>unacceptable risks</span></span>
+                </span>
+              </summary>
+              <div class="project-details">
+                <span aria-hidden="true"></span>
+                <div class="detail-content">
+                  <div class="detail-block">
+                    <h3>Method</h3>
+                    <p>
+                      Decomposed the IFU into prepare, purge, inspect, place, inflate, and
+                      withdraw tasks, then scored failure modes by severity and likelihood.
+                    </p>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Critical hazards</h3>
+                    <ul>
+                      <li>Air embolism from incomplete balloon-lumen purging.</li>
+                      <li>Vessel perforation, dissection, or rupture during placement and inflation.</li>
+                      <li>Catheter separation or injury from excessive withdrawal force.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Controls reviewed</h3>
+                    <ul>
+                      <li>Sterile packaging, inspection requirements, and balloon-volume limits.</li>
+                      <li>Heparinized saline purging and explicit IFU warnings.</li>
+                      <li>Contraindications for fibrotic, adherent, or calcified material.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div class="case-body">
-                <span class="kicker">Mechanical design</span>
-                <h3>Crank design and rendering</h3>
-                <p>
-                  Mechanical design artifacts showing modeled geometry, rendering,
-                  and manufacturing-style presentation. This project shows broader
-                  mechanical modeling beyond biomedical reports and code.
-                </p>
-                <ul class="case-list">
-                  <li>Produced CAD renders from multiple customized views.</li>
-                  <li>Documented a Fusion generative-design attempt and cloud-job failure.</li>
-                  <li>Complements medical-device work with mechanical design evidence.</li>
-                </ul>
-                <span class="case-cta">Read case study</span>
+            </details>
+
+            <details class="project" id="femur">
+              <summary>
+                <span class="project-index">05</span>
+                <span>
+                  <span class="project-label">BMED 3410 | Structural simulation</span>
+                  <span class="project-title">Femoral compression model</span>
+                  <span class="project-summary">
+                    A simplified cortical and trabecular shaft model used to compare analytical
+                    material properties with static structural response under walking-scale load.
+                  </span>
+                  <span class="open-label">View evidence</span>
+                </span>
+                <span class="project-visual data-visual" aria-label="Twenty-five hundred newton load, seven point seven zero four megapascal stress, zero point zero six five millimeter displacement">
+                  <span class="data-point"><strong>2500 N</strong><span>axial load</span></span>
+                  <span class="data-point"><strong>7.704 MPa</strong><span>maximum stress</span></span>
+                  <span class="data-point"><strong>0.065 mm</strong><span>displacement</span></span>
+                </span>
+              </summary>
+              <div class="project-details">
+                <span aria-hidden="true"></span>
+                <div class="detail-content">
+                  <div class="detail-block">
+                    <h3>Model</h3>
+                    <p>
+                      Built a 120 mm concentric cylinder with a 30 mm cortical diameter and
+                      18 mm trabecular diameter, fixed at the base and loaded at the top.
+                    </p>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Material inputs</h3>
+                    <ul>
+                      <li>Cortical Young's modulus: 16.6 GPa; yield strength: 116.9 MPa.</li>
+                      <li>Trabecular Young's modulus: 0.93 GPa; yield strength: 6.1 MPa.</li>
+                      <li>Minimum simulated safety factor: 1.234.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Limitations</h3>
+                    <ul>
+                      <li>Idealized cylindrical geometry and isotropic linear elasticity.</li>
+                      <li>No bending or torsional loading modes.</li>
+                      <li>Population and osteoporotic representation limited by source data.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </a>
+            </details>
+
+            <details class="project" id="syringe">
+              <summary>
+                <span class="project-index">06</span>
+                <span>
+                  <span class="project-label">CAD + technical communication</span>
+                  <span class="project-title">5 mL syringe assembly</span>
+                  <span class="project-summary">
+                    A component-level CAD package communicating a familiar medical device through
+                    assembly modeling, material specification, section views, and drawings.
+                  </span>
+                  <span class="open-label">View evidence</span>
+                </span>
+                <span class="project-visual">
+                  <img
+                    src="assets/syringe-render.png"
+                    width="2880"
+                    height="1226"
+                    alt="CAD rendering of a 5 mL syringe assembly"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              </summary>
+              <div class="project-details">
+                <span aria-hidden="true"></span>
+                <div class="detail-content">
+                  <div class="detail-block">
+                    <h3>Assembly</h3>
+                    <p>
+                      Modeled the syringe body, plunger, 5 mL fluid volume, and hypodermic
+                      needle as a coordinated assembly rather than a single exterior form.
+                    </p>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Documentation</h3>
+                    <ul>
+                      <li>Four drawing sheets: assembly, barrel, plunger, and needle.</li>
+                      <li>88 mm barrel-length dimension with section and detail views.</li>
+                      <li>Diameter, radius, angle, scale, and material callouts.</li>
+                    </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h3>Material model</h3>
+                    <ul>
+                      <li>Polycarbonate/bronze syringe components and clear acrylic plunger.</li>
+                      <li>Water represented the contained fluid.</li>
+                      <li>Steel and PMMA specified for the needle assembly.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </details>
           </div>
         </div>
       </section>
 
-      <section id="research">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Research And Software</h2>
+      <section class="about-section" id="experience">
+        <div class="wrap about-grid">
+          <div class="about-intro">
+            <p class="eyebrow">Experience and capabilities</p>
+            <h2>Engineering across the bench, model, and interface.</h2>
             <p>
-              The software work is strongest when it is tied to a research workflow:
-              clean inputs, useful outputs, and interfaces that make complex data
-              easier to reason about.
+              My work connects biomedical questions with the design documentation,
+              computation, testing, and communication needed to make results useful.
             </p>
+            <div class="capabilities" aria-label="Technical capabilities">
+              <span>MATLAB</span>
+              <span>Python</span>
+              <span>Fusion 360</span>
+              <span>SolidWorks</span>
+              <span>Vicon Nexus</span>
+              <span>FMEA</span>
+              <span>Design controls</span>
+              <span>Biomechanics</span>
+              <span>Technical drawings</span>
+              <span>Data visualization</span>
+            </div>
           </div>
-
-          <div class="case-grid">
-            <a class="case-card" href="#cochlear-case" aria-label="Open cochlear visualization case study">
-              <div class="case-media blank" aria-hidden="true">
-                <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
-              </div>
-              <div class="case-body">
-                <span class="kicker">Meaud Lab | MATLAB GUI</span>
-                <h3>Cochlear micromechanics visualization tool</h3>
-                <p>
-                  A MATLAB post-processing and visualization tool for organ of Corti
-                  micromechanics. The GUI transforms complex simulation outputs into
-                  interpretable geometry, magnitude, phase, animation, frequency sweep,
-                  displacement, and point-response views.
-                </p>
-                <ul class="case-list">
-                  <li>Built file-selectable workflows instead of hard-coded simulation inputs.</li>
-                  <li>Added multi-file comparison, overlay/parallel views, and clickable response plots.</li>
-                  <li>Structured the code so future 3D or model updates can extend the tool.</li>
-                </ul>
-                <span class="case-cta">Read case study</span>
-              </div>
-            </a>
-
-            <a class="case-card" href="#sensor-case" aria-label="Open motion capture and sensor processing case study">
-              <div class="case-media">
-                <img src="assets/epic-lab.png" alt="EPIC Lab Georgia Tech logo" />
-              </div>
-              <div class="case-body">
-                <span class="kicker">EPIC Lab VIP | Biomechanics</span>
-                <h3>Motion-capture and sensor processing workflows</h3>
-                <p>
-                  Research work spanning Vicon data collection, motion-capture
-                  pipeline semi-automation, MATLAB biomechanics analysis, and Python
-                  processing for insole sensor grids.
-                </p>
-                <ul class="case-list">
-                  <li>Reviewed and tested Vicon collection workflows for semi-automation.</li>
-                  <li>Processed sensor-grid data into pressure, center-of-pressure, and blob features.</li>
-                  <li>Worked on tools that connect raw experimental data to usable analysis outputs.</li>
-                </ul>
-                <span class="case-cta">Read case study</span>
-              </div>
-            </a>
-
-            <a class="case-card" href="#femur-case" aria-label="Open femoral bone compression simulation case study">
-              <div class="case-media blank" aria-hidden="true">
-                <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
-              </div>
-              <div class="case-body">
-                <span class="kicker">BMED 3410 | Simulation</span>
-                <h3>Femoral bone compression simulation</h3>
-                <p>
-                  Biomechanics project using material-property extraction and
-                  Autodesk Fusion static structural analysis to approximate femoral
-                  cortical and trabecular response under a 2500 N walking load.
-                </p>
-                <ul class="case-list">
-                  <li>Computed cortical and trabecular elastic properties from test data.</li>
-                  <li>Loaded a 30 mm by 120 mm concentric cylinder with 2500 N axial compression.</li>
-                  <li>Reported 7.704 MPa stress, 0.065 mm displacement, and 1.234 minimum safety factor.</li>
-                </ul>
-                <span class="case-cta">Read case study</span>
-              </div>
-            </a>
-
-            <a class="case-card" href="#asthma-case" aria-label="Open asthma sensor evidence case study">
-              <div class="case-media blank" aria-hidden="true">
-                <div class="schematic"><div class="schematic-line"></div><div class="schematic-line"></div><div class="schematic-line"></div></div>
-              </div>
-              <div class="case-body">
-                <span class="kicker">Drive-discovered design project</span>
-                <h3>Asthma sensor concept materials</h3>
-                <p>
-                  Connected Drive search surfaced a phase-based project cluster with
-                  presentations, progress reports, references, and evaluation criteria.
-                  It is represented as a design-project evidence set until individual
-                  artifacts are reviewed in more detail.
-                </p>
-                <ul class="case-list">
-                  <li>Includes Phase 1, Phase 2, and Phase 3 presentation/report artifacts.</li>
-                  <li>Useful for showing staged design development and evaluation criteria.</li>
-                  <li>Ready to become a full case study once the exact final deliverable is selected.</li>
-                </ul>
-                <span class="case-cta">Read case study</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="case-studies">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Case Study Details</h2>
-            <p>
-              Each selected project is summarized with the evidence available from
-              local reports, code, CAD outputs, spreadsheets, and Drive search
-              results. Sensitive course and lab files are summarized rather than
-              republished directly.
-            </p>
-          </div>
-
-          <div class="detail-stack">
-            <article class="detail-card" id="foley-case">
+          <div class="experience-list">
+            <article class="experience-item">
+              <div class="experience-date">Aug 2024 - Present</div>
               <div>
-                <span class="kicker">BMED 2310 | DHF</span>
-                <h3>Foley catheter design history file</h3>
-                <p>
-                  Team 3, Foley's Fools, developed a design-history-file narrative for
-                  safer long-term indwelling catheter use after hospital discharge.
-                </p>
-              </div>
-              <div>
-                <div class="metric-grid" aria-label="Foley catheter project metrics">
-                  <div class="metric"><strong>25</strong><span>Concept sketches from five ideation prompts</span></div>
-                  <div class="metric"><strong>13 N</strong><span>Removal-force threshold used for laceration-risk testing</span></div>
-                  <div class="metric"><strong>3.2-12.3 N</strong><span>Measured prototype removal/detachment range that stayed below threshold</span></div>
-                </div>
-                <div class="rendering-gallery" aria-label="Stop-valve renderings">
-                  <figure>
-                    <img src="assets/stop-valve-assembly.jpg" alt="Angled CAD rendering of stop-valve component with tube connection" />
-                    <figcaption>Stop-valve assembly rendering showing the tube interface and body geometry.</figcaption>
-                  </figure>
-                  <figure>
-                    <img src="assets/stop-valve-detail.jpg" alt="Close-up CAD rendering of threaded stop-valve detail" />
-                    <figcaption>Detail rendering highlighting threaded geometry and the valve body transition.</figcaption>
-                  </figure>
-                </div>
-                <ul class="detail-list">
-                  <li>Primary user group: men over 70 with urinary retention after discharge; the DHF cites about 10% prevalence over age 70 and about 33% by age 80.</li>
-                  <li>Problem statement: reduce tissue lacerations from involuntary post-hospitalization Foley catheter removal.</li>
-                  <li>Concept screening used a Benefit-Effort Matrix and Pugh Matrix; concepts included magnetic breakaway drainage tubing, an extendable tube, a foldable retention cushion, urethral ring balloons, and soft insertion petals.</li>
-                  <li>Magnetic breakaway prototype: generation 0 detached at 3.2 N but disconnected too easily; generation 1 used a one-way valve and four magnets and detached at 6.9 N.</li>
-                  <li>Foldable retention cushion: generation 0 removed at 8.3 N; later geometry refinement reached 12.3 N while remaining below the 13 N threshold.</li>
-                  <li>Soft-petal insertion concept reduced glycerin carryover compared with baseline tests: less than 0.1 mL vs. 0.5 mL in one generation, and 0.2 mL vs. 0.6 mL in another.</li>
-                </ul>
+                <h3>Undergraduate biomechanics research assistant | EPIC Lab VIP</h3>
+                <p>Vicon data collection, motion-capture workflow review, MATLAB analysis, sensor processing, and mechatronics design support.</p>
               </div>
             </article>
-
-            <article class="detail-card" id="fogarty-case">
+            <article class="experience-item">
+              <div class="experience-date">Aug 2025 - Present</div>
               <div>
-                <span class="kicker">Medical device risk | uFMEA</span>
-                <h3>Fogarty catheter use-FMEA</h3>
-                <p>
-                  A use-risk analysis translated instructions for use into task
-                  steps, failure modes, hazards, harms, current controls, and residual
-                  risk categories.
-                </p>
-              </div>
-              <div>
-                <div class="metric-grid" aria-label="Fogarty uFMEA metrics">
-                  <div class="metric"><strong>6</strong><span>IFU task steps: prepare, purge, inspect, place, inflate, withdraw</span></div>
-                  <div class="metric"><strong>22</strong><span>Analyzed use-risk rows in the spreadsheet</span></div>
-                  <div class="metric"><strong>9</strong><span>Unacceptable risks before added mitigation</span></div>
-                </div>
-                <ul class="detail-list">
-                  <li>Highest-severity hazards included intravascular air leading to air embolism, vessel perforation, dissection, rupture, and catheter separation.</li>
-                  <li>Unacceptable purge risks included failure to remove air from the balloon lumen, using air instead of sterile fluid or CO2, and failure to purge the thru-lumen.</li>
-                  <li>Placement and inflation risks included advancing against resistance, overinflating the balloon in the vessel, and continuing after balloon engagement with the vessel wall.</li>
-                  <li>Withdrawal risks included excessive pull force, failure to adjust balloon diameter to changing arterial diameter, and pulling against adherent material.</li>
-                  <li>Current controls included IFU warnings, sterile packaging, mandatory inspection, balloon-volume limits, heparinized saline purging, and contraindications for fibrotic, adherent, or calcified material.</li>
-                </ul>
+                <h3>Research assistant | Meaud Lab</h3>
+                <p>Computational cochlear mechanics and MATLAB tools for post-processing, visualization, and comparison of model outputs.</p>
               </div>
             </article>
-
-            <article class="detail-card" id="syringe-case">
+            <article class="experience-item">
+              <div class="experience-date">Teaching</div>
               <div>
-                <span class="kicker">CAD + technical drawing</span>
-                <h3>5 mL syringe modeling project</h3>
-                <p>
-                  A component-level CAD and drawing package communicated a familiar
-                  clinical device as an engineered assembly with material and
-                  dimensional choices.
-                </p>
-              </div>
-              <div>
-                <div class="metric-grid" aria-label="Syringe CAD metrics">
-                  <div class="metric"><strong>5 mL</strong><span>Required fluid volume represented in the assembly</span></div>
-                  <div class="metric"><strong>4</strong><span>Drawing sheets for assembly, barrel, plunger, and needle</span></div>
-                  <div class="metric"><strong>88 mm</strong><span>Barrel length dimension shown in the technical drawing</span></div>
-                </div>
-                <ul class="detail-list">
-                  <li>Parts list included a 5 mL syringe body, plunger, fluid volume, and hypodermic needle.</li>
-                  <li>Materials were specified as polycarbonate/bronze for the syringe, clear acrylic for the plunger, water for the fluid, and steel/PMMA for the needle assembly.</li>
-                  <li>Drawings included section views, scale callouts, radii, diameters, angular features, and needle-detail geometry.</li>
-                  <li>The portfolio uses the rendered syringe image as a visual anchor because it is easier for reviewers to scan than a raw engineering drawing.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="detail-card" id="crank-case">
-              <div>
-                <span class="kicker">Mechanical design | Fusion</span>
-                <h3>Crank design and rendering</h3>
-                <p>
-                  Mechanical-design evidence showing CAD rendering, form
-                  communication, and a documented generative-design attempt.
-                </p>
-              </div>
-              <div>
-                <div class="metric-grid" aria-label="Crank project facts">
-                  <div class="metric"><strong>3</strong><span>Rendered custom-view images found locally</span></div>
-                  <div class="metric"><strong>May 1, 2026</strong><span>Fusion cloud study log timestamp</span></div>
-                  <div class="metric"><strong>1</strong><span>Generative structural-component study attempted</span></div>
-                </div>
-                <ul class="detail-list">
-                  <li>Available artifacts include multiple rendered crank views and a Fusion project log.</li>
-                  <li>The log records a generative model structural-component study that started successfully but ended with a Fusion cloud-job error.</li>
-                  <li>The portfolio presents this project as mechanical modeling and visual communication evidence, not as a completed validated analysis.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="detail-card" id="cochlear-case">
-              <div>
-                <span class="kicker">Meaud Lab | MATLAB GUI</span>
-                <h3>Cochlear micromechanics visualization tool</h3>
-                <p>
-                  A MATLAB post-processing package for organ of Corti micromechanics
-                  that converts saved simulation frequency sweeps into interactive
-                  visual analysis.
-                </p>
-              </div>
-              <div>
-                <div class="metric-grid" aria-label="Cochlear visualization metrics">
-                  <div class="metric"><strong>5</strong><span>User inputs: file, x-location, frequency, observation angle, grid resolution</span></div>
-                  <div class="metric"><strong>90 deg</strong><span>Radial displacement projection convention</span></div>
-                  <div class="metric"><strong>0 deg</strong><span>Transverse displacement projection convention</span></div>
-                </div>
-                <ul class="detail-list">
-                  <li>Main API: <code>computeOoCProjection(datafilename, xLocationCm, freqHz, observationAngleDeg)</code>.</li>
-                  <li>The tool selects nearest saved <code>xMesh</code> location and frequency, computes complex 2D radial/transverse vectors, samples the 2D displacement field, and projects motion onto an observation angle.</li>
-                  <li>GUI views include baseline/deformed OoC geometry, projected magnitude, projected phase relative to BM, landmark trajectories, saved structural frequency sweep, frequency sweep plots, displacement-vs-x plots, and point-response plots.</li>
-                  <li>Implementation replaced hard-coded filenames, x-locations, inline plotting, and monolithic script structure with selectable files and modular folders for I/O, mechanics, geometry, plotting, validation, tests, and examples.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="detail-card" id="sensor-case">
-              <div>
-                <span class="kicker">EPIC Lab VIP | Python + MATLAB</span>
-                <h3>Motion-capture and sensor processing workflows</h3>
-                <p>
-                  Research-tooling work for Vicon motion capture and insole sensor
-                  grids, linking raw experimental data to usable visual and numerical
-                  outputs.
-                </p>
-              </div>
-              <div>
-                <div class="metric-grid" aria-label="Sensor processing metrics">
-                  <div class="metric"><strong>31 x 11</strong><span>Fixed grid size used for each insole pressure map</span></div>
-                  <div class="metric"><strong>5.0</strong><span>Binary threshold used before morphology operations</span></div>
-                  <div class="metric"><strong>~24 hr</strong><span>README estimate for a full-subject Vicon processing run</span></div>
-                </div>
-                <ul class="detail-list">
-                  <li>Python pipeline parses headers like <code>Insole1_sensel_x_y</code>, maps values into two insole grids, and visualizes live sensor frames with fixed color scaling.</li>
-                  <li>Feature operations include mean pressure, peak pressure, linear center of pressure, nonlinear center of pressure, binary thresholding, 2x2 morphological opening, active-sensor counts, and connected-component blob counts.</li>
-                  <li>MATLAB AMP-with-GUI workflow targets MATLAB 2025a or later, Vicon Nexus, and a Windows workstation.</li>
-                  <li>Vicon workflow includes static skeleton calibration, optional functional joint calibration, marker gap/jump checks, rigid-body recovery, failed-trial cleanup, and final movement of processed trials into finished folders.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="detail-card" id="femur-case">
-              <div>
-                <span class="kicker">BMED 3410 | Fusion simulation</span>
-                <h3>Femoral bone compression simulation</h3>
-                <p>
-                  A simplified cortical/trabecular femoral shaft model tested whether
-                  a cylindrical bone representation could approximate elastic response
-                  under a walking-scale compressive load.
-                </p>
-              </div>
-              <div>
-                <div class="metric-grid" aria-label="Femur simulation metrics">
-                  <div class="metric"><strong>2500 N</strong><span>Applied axial compression load</span></div>
-                  <div class="metric"><strong>7.704 MPa</strong><span>Maximum von Mises stress</span></div>
-                  <div class="metric"><strong>0.065 mm</strong><span>Maximum total displacement</span></div>
-                </div>
-                <ul class="detail-list">
-                  <li>Geometry: 120 mm-tall concentric cylinder with 30 mm outer cortical diameter and 18 mm inner trabecular diameter.</li>
-                  <li>Material properties extracted from compression/torsion data: cortical Young's modulus 16.6 GPa, cortical shear modulus 6.39 GPa, cortical compressive yield strength 116.9 MPa.</li>
-                  <li>Trabecular properties: Young's modulus 0.93 GPa, shear modulus 0.387 GPa, compressive yield strength 6.1 MPa.</li>
-                  <li>Boundary conditions fixed the bottom surface and applied load normal to the top surface; minimum safety factor was 1.234.</li>
-                  <li>Limitations explicitly identified population bias, osteoporotic underrepresentation, isotropic linear-elastic assumptions, simplified cylindrical geometry, and missing bending/torsion loading modes.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="detail-card" id="asthma-case">
-              <div>
-                <span class="kicker">Drive evidence cluster</span>
-                <h3>Asthma sensor concept materials</h3>
-                <p>
-                  Drive search identified a phase-based sensor/design project cluster.
-                  The site lists the discoverable artifacts honestly until a final
-                  report or approved excerpts are selected for public sharing.
-                </p>
-              </div>
-              <div>
-                <div class="metric-grid" aria-label="Asthma sensor evidence metrics">
-                  <div class="metric"><strong>3</strong><span>Phase presentation/report stages found in Drive search</span></div>
-                  <div class="metric"><strong>11</strong><span>Related Drive artifacts visible in the search results</span></div>
-                  <div class="metric"><strong>Pending</strong><span>Needs exact final deliverable selection before stronger claims</span></div>
-                </div>
-                <ul class="detail-list">
-                  <li>Visible Drive results included Phase 1 Presentation, Phase 2 Presentation, Phase 3 Presentation, Phase 1 Progress Report, and Phase 3 Progress Report.</li>
-                  <li>Supporting files surfaced in the same search included Group References Phase 2, Evaluation Criteria, Established/Related Solutions, Phase 3 References, Sources Week 4, and a BMED2250 design documentation template.</li>
-                  <li>This is currently framed as an evidence cluster, not a completed public case study, because the exact final artifact and shareable content still need to be chosen.</li>
-                </ul>
+                <h3>Biotransport teaching assistant and statics tutor</h3>
+                <p>Support for conservation principles, dimensional analysis, computational methods, equilibrium, and force problem solving.</p>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="skills">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Technical Range</h2>
+      <section class="contact-section" id="contact">
+        <div class="wrap contact-grid">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>Let's build something useful.</h2>
             <p>
-              The portfolio is organized around the way engineering reviewers scan:
-              device process, quantitative analysis, code, and communication.
+              I am interested in internships and collaborative work in medical-device
+              design, biomechanics, computational modeling, and research software.
             </p>
           </div>
-          <div class="skill-grid">
-            <article class="skill-card">
-              <span class="kicker">Medical devices</span>
-              <h3>Design controls</h3>
-              <p>DHF structure, user needs, design inputs, concept screening, stakeholder value, IFU controls, and risk traceability.</p>
-            </article>
-            <article class="skill-card">
-              <span class="kicker">Computation</span>
-              <h3>MATLAB and Python</h3>
-              <p>MATLAB GUIs, simulation post-processing, sensor data parsing, NumPy/Pandas workflows, OpenCV morphology, and visualization.</p>
-            </article>
-            <article class="skill-card">
-              <span class="kicker">Biomechanics</span>
-              <h3>Modeling and testing</h3>
-              <p>Vicon workflows, motion-capture data, load distribution, material properties, stress analysis, and model limitation review.</p>
-            </article>
-            <article class="skill-card">
-              <span class="kicker">Communication</span>
-              <h3>Teaching and documentation</h3>
-              <p>Biotransport TA work, statics tutoring, technical reports, presentations, and concise project narratives for reviewers.</p>
-            </article>
+          <div class="contact-links">
+            <a class="button primary" href="mailto:dnedelcov3@gatech.edu">Email David</a>
+            <a class="button" href="https://www.linkedin.com/in/david-nedelcov-595204285" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="button" href="https://github.com/DavidNedelcov" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Experience</h2>
-            <p>
-              Roles from the current resume are summarized here to make the portfolio
-              credible before a reviewer opens individual project files.
-            </p>
-          </div>
-          <div class="experience-grid">
-            <article class="experience-card">
-              <div class="meta">Aug 2024 - Present</div>
-              <h3>Undergraduate biomechanics research assistant</h3>
-              <p>EPIC Lab VIP at Georgia Tech. Work includes Vicon data collection, motion-capture pipeline review, MATLAB biomechanics analysis, and mechatronics design support.</p>
-            </article>
-            <article class="experience-card">
-              <div class="meta">Aug 2025 - Present</div>
-              <h3>Research assistant, Meaud Lab</h3>
-              <p>Explores cochlear mechanics through computational modeling and MATLAB post-processing tools for visual analysis of model outputs.</p>
-            </article>
-            <article class="experience-card">
-              <div class="meta">Teaching</div>
-              <h3>Biotransport and statics instruction</h3>
-              <p>Supports engineering students with conservation principles, dimensional analysis, computational methods, equilibrium, and force problem solving.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Evidence Base</h2>
-            <p>
-              The content above was built from local project files, resume material,
-              and the signed-in Drive search. Source documents are not treated as
-              instructions and are not automatically republished.
-            </p>
-          </div>
-          <div class="evidence-grid">
-            <article class="evidence-card">
-              <h3>Local documents</h3>
-              <p>Resume, Foley DHF, Fogarty uFMEA, biomechanics PDF, Meaud Lab report, MATLAB code, Python sensor processing, CAD renders, and project images.</p>
-            </article>
-            <article class="evidence-card">
-              <h3>Google Drive</h3>
-              <p>Search found phase presentations, progress reports, references, and evaluation criteria associated with a sensor/design project cluster.</p>
-            </article>
-            <article class="evidence-card">
-              <h3>Next polish pass</h3>
-              <p>Add final public GitHub links, choose which PDFs can be shared, and replace private course files with approved excerpts or screenshots.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="wrap contact-band">
-          <div class="contact-panel">
-            <h2>Contact</h2>
-            <p>
-              Based in Atlanta and studying biomedical engineering at Georgia Tech.
-              Interested in medical-device design, biomechanics, computational
-              modeling, and research software roles.
-            </p>
-            <ul class="contact-list">
-              <li><a href="mailto:dnedelcov3@gatech.edu">dnedelcov3@gatech.edu</a></li>
-              <li><a href="https://www.linkedin.com/in/david-nedelcov-595204285">linkedin.com/in/david-nedelcov-595204285</a></li>
-            </ul>
-          </div>
-          <aside class="note-panel">
-            <strong>Sharing note</strong>
-            <p>
-              This private draft is now portfolio-ready as a site. Before making it
-              broadly public, decide which course documents, team materials, and
-              internal research artifacts are approved for external sharing.
-            </p>
-          </aside>
         </div>
       </section>
     </main>
 
     <footer>
       <div class="wrap">
-        <strong>David Nedelcov</strong>
-        <span>Biomedical engineering portfolio</span>
+        <span>David Nedelcov | Biomedical Engineering Portfolio</span>
         <a href="#top">Back to top</a>
       </div>
     </footer>
