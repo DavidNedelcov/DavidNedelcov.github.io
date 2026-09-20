@@ -179,11 +179,11 @@
 
       .hero {
         display: grid;
-        min-height: min(650px, calc(100svh - 110px));
-        grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
-        gap: 64px;
+        min-height: min(560px, calc(100svh - 150px));
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 56px;
         align-items: center;
-        padding: 64px 0;
+        padding: 48px 0;
       }
 
       .eyebrow {
@@ -205,8 +205,8 @@
       h1 {
         margin: 0 0 14px;
         font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(3.5rem, 7vw, 6.6rem);
-        line-height: 0.92;
+        font-size: clamp(3.4rem, 6vw, 5.4rem);
+        line-height: 0.94;
         letter-spacing: 0;
       }
 
@@ -215,7 +215,7 @@
         margin: 0 0 18px;
         color: var(--white);
         font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+        font-size: clamp(1.4rem, 2.2vw, 1.9rem);
         line-height: 1.16;
       }
 
@@ -260,7 +260,7 @@
 
       .hero-profile {
         position: relative;
-        width: min(100%, 370px);
+        width: min(100%, 320px);
         justify-self: end;
       }
 
@@ -345,21 +345,35 @@
       }
 
       .project-list {
-        border-top: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+        align-items: start;
       }
 
       .project {
-        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--white);
       }
 
       .project summary {
         display: grid;
-        grid-template-columns: 66px minmax(0, 1fr) minmax(280px, 0.68fr);
-        gap: 28px;
-        align-items: center;
-        padding: 30px 0;
+        grid-template-columns: 48px minmax(0, 1fr);
+        grid-template-areas:
+          "visual visual"
+          "index content";
+        gap: 0;
+        align-items: start;
+        padding: 0;
         cursor: pointer;
         list-style: none;
+      }
+
+      .project summary > span:nth-child(2) {
+        grid-area: content;
+        padding: 22px 22px 24px 0;
       }
 
       .project summary::-webkit-details-marker {
@@ -372,7 +386,9 @@
       }
 
       .project-index {
+        grid-area: index;
         align-self: start;
+        padding: 22px 0 24px 22px;
         color: var(--rust);
         font-family: Georgia, "Times New Roman", serif;
         font-size: 1.5rem;
@@ -426,21 +442,23 @@
       }
 
       .project-visual {
-        min-height: 196px;
+        grid-area: visual;
+        min-height: 200px;
         overflow: hidden;
-        border: 1px solid var(--line);
+        border: 0;
+        border-bottom: 1px solid var(--line);
         background: var(--white);
       }
 
       .project-visual img {
         width: 100%;
-        height: 196px;
+        height: 200px;
         object-fit: cover;
       }
 
       .data-visual {
         display: grid;
-        min-height: 196px;
+        min-height: 200px;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         align-items: stretch;
         background: var(--navy-deep);
@@ -474,19 +492,21 @@
       }
 
       .project-details {
-        display: grid;
-        grid-template-columns: 66px minmax(0, 1fr);
-        gap: 28px;
-        padding: 0 0 36px;
+        display: block;
+        padding: 0 22px 24px;
+      }
+
+      .project-details > span:first-child {
+        display: none;
       }
 
       .detail-content {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 28px;
-        padding: 28px;
-        border-left: 4px solid var(--gold);
-        background: var(--white);
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 22px;
+        border-left: 3px solid var(--gold);
+        background: var(--paper);
       }
 
       .detail-block h3 {
@@ -682,25 +702,15 @@
           border-top: 1px solid var(--line);
         }
 
-        .project summary {
-          grid-template-columns: 50px minmax(0, 1fr);
-        }
-
-        .project-visual {
-          grid-column: 2;
-        }
-
-        .project-details {
-          grid-template-columns: 50px minmax(0, 1fr);
-        }
-
-        .detail-content {
-          grid-template-columns: 1fr;
-        }
-
         .about-grid {
           grid-template-columns: 1fr;
           gap: 36px;
+        }
+      }
+
+      @media (max-width: 840px) {
+        .project-list {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -783,28 +793,30 @@
           margin-bottom: 26px;
         }
 
-        .project summary {
-          grid-template-columns: 1fr;
+        .project-list {
           gap: 14px;
-          padding: 28px 0;
         }
 
         .project-index {
+          padding: 18px 0 20px 18px;
           font-size: 1rem;
         }
 
-        .project-visual {
-          grid-column: 1;
+        .project summary > span:nth-child(2) {
+          padding: 18px 18px 20px 0;
         }
 
         .project-details {
-          grid-template-columns: 1fr;
-          gap: 0;
-          padding-bottom: 28px;
+          padding: 0 18px 20px;
         }
 
-        .detail-content {
-          padding: 22px;
+        .project-visual,
+        .data-visual {
+          min-height: 180px;
+        }
+
+        .project-visual img {
+          height: 180px;
         }
 
         .rendering-gallery {
@@ -938,15 +950,10 @@
                   </span>
                   <span class="open-label">View evidence</span>
                 </span>
-                <span class="project-visual">
-                  <img
-                    src="assets/stop-valve-assembly.jpg"
-                    width="1800"
-                    height="971"
-                    alt="CAD rendering of the catheter stop-valve assembly"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <span class="project-visual data-visual" aria-label="Twenty-five concepts, thirteen newton threshold, three point two to twelve point three newton prototype range">
+                  <span class="data-point"><strong>25</strong><span>concepts screened</span></span>
+                  <span class="data-point"><strong>13 N</strong><span>design threshold</span></span>
+                  <span class="data-point"><strong>3.2-12.3 N</strong><span>prototype range</span></span>
                 </span>
               </summary>
               <div class="project-details">
@@ -974,30 +981,6 @@
                       <li>Retention-cushion iterations measured 8.3 N to 12.3 N.</li>
                       <li>Team results are summarized from the shared design history file.</li>
                     </ul>
-                  </div>
-                  <div class="rendering-gallery" aria-label="Stop-valve renderings">
-                    <figure>
-                      <img
-                        src="assets/stop-valve-assembly.jpg"
-                        width="1800"
-                        height="971"
-                        alt="Angled CAD rendering of the stop-valve assembly and tube connection"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <figcaption>Assembly view showing the stop-valve body and tube interface.</figcaption>
-                    </figure>
-                    <figure>
-                      <img
-                        src="assets/stop-valve-detail.jpg"
-                        width="1800"
-                        height="950"
-                        alt="Close-up CAD rendering of the threaded stop-valve detail"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <figcaption>Detail view used to review the threaded connection geometry.</figcaption>
-                    </figure>
                   </div>
                 </div>
               </div>
@@ -1103,18 +1086,22 @@
               <summary>
                 <span class="project-index">04</span>
                 <span>
-                  <span class="project-label">Medical-device risk analysis</span>
-                  <span class="project-title">Fogarty catheter use-FMEA</span>
+                  <span class="project-label">Risk analysis + CAD design</span>
+                  <span class="project-title">Fogarty catheter risk analysis and valve concepts</span>
                   <span class="project-summary">
                     An instructions-for-use analysis connecting user actions to foreseeable
-                    errors, hazardous situations, harms, controls, and mitigation priorities.
+                    errors and harms, paired with two valve concepts I designed in CAD.
                   </span>
                   <span class="open-label">View evidence</span>
                 </span>
-                <span class="project-visual data-visual" aria-label="Six task steps, twenty-two risk rows, nine unacceptable risks">
-                  <span class="data-point"><strong>6</strong><span>task steps</span></span>
-                  <span class="data-point"><strong>22</strong><span>risk rows</span></span>
-                  <span class="data-point"><strong>9</strong><span>unacceptable risks</span></span>
+                <span class="project-visual">
+                  <img
+                    src="assets/fogarty-valve-concept-1.jpg"
+                    width="1800"
+                    height="971"
+                    alt="CAD rendering of the first Fogarty valve concept designed by David Nedelcov"
+                    decoding="async"
+                  />
                 </span>
               </summary>
               <div class="project-details">
@@ -1124,7 +1111,8 @@
                     <h3>Method</h3>
                     <p>
                       Decomposed the IFU into prepare, purge, inspect, place, inflate, and
-                      withdraw tasks, then scored failure modes by severity and likelihood.
+                      withdraw tasks, then scored 22 failure modes by severity and likelihood.
+                      Nine risks were classified as unacceptable before added mitigation.
                     </p>
                   </div>
                   <div class="detail-block">
@@ -1142,6 +1130,37 @@
                       <li>Heparinized saline purging and explicit IFU warnings.</li>
                       <li>Contraindications for fibrotic, adherent, or calcified material.</li>
                     </ul>
+                  </div>
+                  <div class="detail-block">
+                    <h3>My CAD work</h3>
+                    <p>
+                      I designed both valve concepts shown below for the Fogarty catheter
+                      project, including the body, tube interface, and threaded geometry.
+                    </p>
+                  </div>
+                  <div class="rendering-gallery" aria-label="Fogarty valve concepts designed by David Nedelcov">
+                    <figure>
+                      <img
+                        src="assets/fogarty-valve-concept-1.jpg"
+                        width="1800"
+                        height="971"
+                        alt="First Fogarty valve CAD concept with an angled body and tube connection"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Valve concept 1: angled body and tube-interface design.</figcaption>
+                    </figure>
+                    <figure>
+                      <img
+                        src="assets/fogarty-valve-concept-2.jpg"
+                        width="1800"
+                        height="950"
+                        alt="Second Fogarty valve CAD concept with threaded connection geometry"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Valve concept 2: alternate body with threaded connection geometry.</figcaption>
+                    </figure>
                   </div>
                 </div>
               </div>
@@ -1213,7 +1232,6 @@
                     width="2880"
                     height="1226"
                     alt="CAD rendering of a 5 mL syringe assembly"
-                    loading="lazy"
                     decoding="async"
                   />
                 </span>
@@ -1312,7 +1330,6 @@
           <div class="contact-links">
             <a class="button primary" href="mailto:dnedelcov3@gatech.edu">Email David</a>
             <a class="button" href="https://www.linkedin.com/in/david-nedelcov-595204285" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a class="button" href="https://github.com/DavidNedelcov" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </div>
       </section>
