@@ -360,11 +360,12 @@
 
       .project summary {
         display: grid;
-        grid-template-columns: 48px minmax(0, 1fr);
+        grid-template-columns: 56px minmax(0, 1fr);
         grid-template-areas:
           "visual visual"
           "index content";
-        gap: 0;
+        column-gap: 12px;
+        row-gap: 0;
         align-items: start;
         padding: 0;
         cursor: pointer;
@@ -388,7 +389,7 @@
       .project-index {
         grid-area: index;
         align-self: start;
-        padding: 22px 0 24px 22px;
+        padding: 22px 0 24px 18px;
         color: var(--rust);
         font-family: Georgia, "Times New Roman", serif;
         font-size: 1.5rem;
@@ -804,7 +805,7 @@
         }
 
         .project-index {
-          padding: 18px 0 20px 18px;
+          padding: 18px 0 20px 14px;
           font-size: 1rem;
         }
 
