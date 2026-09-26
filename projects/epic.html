@@ -59,6 +59,7 @@
 <a href="#section-2">Make the insole data interpretable.</a>
 <a href="#processing-detail">Preserve the spatial meaning of each channel.</a>
 <a href="#section-3">Compare the sensing platforms.</a>
+<a href="#code-evidence">Run a known input through the processing code.</a>
 </nav>
 <div class="story">
 <section class="story-section" id="section-1">
@@ -147,6 +148,29 @@
 </div>
 </section>
 
+<section class="story-section" id="code-evidence">
+<div class="section-label">Executed evidence</div>
+<div class="story-copy">
+<h2>Run a known input through the processing code.</h2>
+<p>For this portfolio, I used a synthetic map with two contact patches and one isolated active cell as input to the project’s actual Python functions. The run exercised header parsing, placement in a 31 × 11 map, pressure summaries, thresholding, morphological opening, and connected components.</p>
+<p>The implementation thresholds values at 5 and applies a 2 × 2 opening operation. On this input, the processed result contained 44 active cells in two components; the isolated cell was removed. Four consistency checks passed, including preservation of missing cells as NaN.</p>
+<p class="scope-note">This is a demonstration added for the portfolio on 26 September 2026. Inputs use arbitrary units and contain no participant measurements. It checks specific code behavior, not biomechanical accuracy.</p>
+<div class="evidence-links">
+<a href="../assets/epic-checks.json" target="_blank" rel="noopener">
+<span>Synthetic processing results</span>
+<small>JSON · inputs summary, output metrics, four checks, and source fingerprints</small>
+<b aria-hidden="true">↗</b>
+</a>
+</div>
+</div>
+</section>
+<figure class="plot-evidence">
+<a class="zoom" data-zoom href="../assets/epic-processing-demo.webp" aria-label="Enlarge: Synthetic sensor grid and processed binary map from the actual Python functions">
+<img src="../assets/epic-processing-demo.webp" width="1800" height="1260" alt="Synthetic sensor grid and processed binary map from the actual Python functions" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Actual code output from constructed input. The marker is the algorithm’s computed grid coordinate; it is not a measured human center of pressure.</figcaption>
+</figure>
 </div>
 <a class="next-project" href="cochlear.html">
 <span class="eyebrow">Next project</span>

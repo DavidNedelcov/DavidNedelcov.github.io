@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From MRI to a loaded vertebra. — David Nedelcov</title>
+<meta name="description" content="Segmentation, meshing, contact troubleshooting, and a compression simulation backed by the original reaction-force data and solver record.">
+<meta name="theme-color" content="#f6f5f0">
+<link rel="canonical" href="https://davidnedelcov.github.io/projects/vertebra.html">
+<meta property="og:title" content="From MRI to a loaded vertebra. — David Nedelcov">
+<meta property="og:description" content="Segmentation, meshing, contact troubleshooting, and a compression simulation backed by the original reaction-force data and solver record.">
+<meta property="og:image" content="https://davidnedelcov.github.io/assets/vertebra-segmentation.webp">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../site.js" defer>
+</script>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header wrap">
+<a class="wordmark" href="../index.html">David Nedelcov<span>Biomedical engineering</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#contact">Contact</a>
+<a class="resume" href="../assets/David_Nedelcov_Resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span>
+</a>
+</nav>
+</header>
+<main id="main" class="wrap case">
+<a class="back" href="../index.html#work">← All projects</a>
+<div class="eyebrow">09 / Image-based biomechanics</div>
+<h1>From MRI to a loaded vertebra.</h1>
+<p class="case-dek">Segmentation, meshing, contact troubleshooting, and a compression simulation backed by the original reaction-force data and solver record.</p>
+<dl class="project-meta">
+<div>
+<dt>My contribution</dt>
+<dd>Segmentation · Model setup · Contact troubleshooting · Analysis</dd>
+</div>
+<div>
+<dt>Context</dt>
+<dd>Finite-element coursework · September 2026<br>Individual project</dd>
+</div>
+<div>
+<dt>Tools & methods</dt>
+<dd>Simpleware · FEBio · Volume meshing · Contact mechanics</dd>
+</div>
+</dl>
+<figure class="case-cover segmentation-cover">
+<a class="zoom" data-zoom href="../assets/vertebra-segmentation.webp" aria-label="Enlarge: Three-dimensional segmented L3 vertebra">
+<img src="../assets/vertebra-segmentation.webp" width="1800" height="1176" alt="Three-dimensional segmented L3 vertebra" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Original segmented geometry.</figcaption>
+</figure>
+<nav class="case-contents" aria-label="Case study sections">
+<span>In this project</span>
+<a href="#pipeline">Keep the surface exercise separate from the solved volume model.</a>
+<a href="#setup">Load the vertebral body between two plates.</a>
+<a href="#debugging">Solver completion and contact quality are separate questions.</a>
+<a href="#balance">Check both sides of the force balance.</a>
+<a href="#limits">Keep the contact limitation visible.</a>
+<a href="#source">Inspect the numerical record.</a>
+</nav>
+<div class="story">
+<section class="story-section" id="pipeline">
+<div class="section-label">01 / Geometry pipeline</div>
+<div class="story-copy">
+<h2>Keep the surface exercise separate from the solved volume model.</h2>
+<p>This coursework followed an L3 vertebra from MRI segmentation through meshing and compression analysis. I reviewed the segmentation in three anatomical planes and produced a smoothed three-dimensional mask.</p>
+<p>The STL was also used for a separate TetGen meshing exercise. The final compression analysis used the imported Simpleware/Abaqus volume mesh. Those are different meshes; the denser TetGen statistics do not describe the solved model.</p>
+</div>
+</section>
+<figure class="">
+<a class="zoom" data-zoom href="../assets/vertebra-segmentation.webp" aria-label="Enlarge: Original three-dimensional preview of the segmented L3 vertebra">
+<img src="../assets/vertebra-segmentation.webp" width="1800" height="1176" alt="Original three-dimensional preview of the segmented L3 vertebra" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Smoothed L3 mask in Simpleware. Original coursework image.</figcaption>
+</figure>
+<section class="story-section" id="setup">
+<div class="section-label">02 / Mechanical setup</div>
+<div class="story-copy">
+<h2>Load the vertebral body between two plates.</h2>
+<p>The bone used homogeneous Neo-Hookean elasticity with E = 200 MPa and ν = 0.3. Separate rigid-body materials represented two 50 × 50 × 2 mm compression plates.</p>
+<p>The lower plate was fully fixed. The top plate could translate only vertically, with a prescribed −5 mm displacement. Two local bone nodes restrained lateral movement while leaving vertical displacement free.</p>
+<p>Both interfaces used sliding-elastic contact with friction coefficient 0.3. The final configuration assigned bone as primary and the plate face as secondary.</p>
+</div>
+</section>
+<figure class="">
+<a class="zoom" data-zoom href="../assets/vertebra-plates.webp" aria-label="Enlarge: Original FEBio model showing rigid plates positioned around the L3 vertebra">
+<img src="../assets/vertebra-plates.webp" width="1800" height="1125" alt="Original FEBio model showing rigid plates positioned around the L3 vertebra" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Rigid plates positioned around the vertebral body in the setup view.</figcaption>
+</figure>
+<section class="story-section" id="debugging">
+<div class="section-label">03 / Iteration</div>
+<div class="story-copy">
+<h2>Solver completion and contact quality are separate questions.</h2>
+<p>The work included an initial increment failure and earlier contact configurations with excessive penetration. Trial 3 used a near-zero residual threshold adjustment and bone-primary contact surfaces, improving enforcement relative to the earlier plate-primary trials.</p>
+<p>The final run reached normal termination with 55 accepted increments, 482 equilibrium iterations, 16 warnings, and zero errors. The warnings recorded extra iterations and stiffness reformations before convergence.</p>
+</div>
+</section>
+<figure class="plot-evidence">
+<a class="zoom" data-zoom href="../assets/vertebra-reactions.webp" aria-label="Enlarge: Graph of signed top and bottom plate reaction forces versus prescribed plate travel">
+<img src="../assets/vertebra-reactions.webp" width="1500" height="920" alt="Graph of signed top and bottom plate reaction forces versus prescribed plate travel" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Original Trial 3 reaction curve. The horizontal axis includes seating and is plate travel, not direct tissue shortening.</figcaption>
+</figure>
+<section class="story-section" id="balance">
+<div class="section-label">04 / Numerical evidence</div>
+<div class="story-copy">
+<h2>Check both sides of the force balance.</h2>
+<p>At 5 mm prescribed plate travel, the top and bottom reactions were approximately −5,117.72 N and +5,117.65 N. Their sum was about −0.069 N, or 0.00134% of the top reaction magnitude.</p>
+<p>That near-balance is useful evidence of equilibrium. It does not establish that the contact behavior, bone material, or predicted stiffness is physically accurate.</p>
+</div>
+</section>
+<figure class="">
+<a class="zoom" data-zoom href="../assets/vertebra-stress.webp" aria-label="Enlarge: Original effective stress contour of the L3 vertebra after Trial 3 compression">
+<img src="../assets/vertebra-stress.webp" width="1800" height="1014" alt="Original effective stress contour of the L3 vertebra after Trial 3 compression" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Final effective-stress contour, plates hidden. The displayed peak is not a fracture prediction.</figcaption>
+</figure>
+<section class="story-section" id="limits">
+<div class="section-label">05 / Remaining limitations</div>
+<div class="story-copy">
+<h2>Keep the contact limitation visible.</h2>
+<p>The final coordinate check still found approximately 0.97 mm intrusion into the top plate and 0.39 mm into the bottom plate. A penalty-sensitivity study was not completed, so the force–displacement curve retains that limitation.</p>
+<p>The model also used homogeneous material properties, localized lateral restraints, and no fracture criterion. No mesh-convergence study was reported. These outputs document a completed computational exercise, not a validated prediction of vertebral failure.</p>
+</div>
+</section>
+<section class="story-section" id="source">
+<div class="section-label">06 / Evidence</div>
+<div class="story-copy">
+<h2>Inspect the numerical record.</h2>
+<div class="evidence-links">
+<a href="../assets/vertebra-reactions.csv" target="_blank" rel="noopener">
+<span>Original reaction-force data</span>
+<small>CSV · accepted Trial 3 states and signed plate reactions</small>
+<b aria-hidden="true">↗</b>
+</a>
+<a href="../assets/vertebra-solver-log.txt" target="_blank" rel="noopener">
+<span>Trial 3 solver log</span>
+<small>Numerical record · local directory paths removed</small>
+<b aria-hidden="true">↗</b>
+</a>
+</div>
+</div>
+</section>
+</div>
+<a class="next-project" href="foley.html">
+<span class="eyebrow">Next project</span>
+<span>A breakaway connection for a Foley catheter <span aria-hidden="true">↗</span>
+</span>
+</a>
+</main>
+<footer class="wrap footer">
+<a href="../index.html">David Nedelcov</a>
+<span>Georgia Tech · Atlanta, GA</span>
+<a href="#top">Back to top ↑</a>
+</footer>
+<dialog class="lightbox" aria-label="Expanded project image">
+<button class="close" aria-label="Close expanded image">Close ×</button>
+<img alt="">
+<p>
+</p>
+</dialog>
+</body>
+</html>

@@ -59,6 +59,7 @@
 <a href="#section-2">Explore results without rewriting the plotting script.</a>
 <a href="#interface-detail">Keep the scientific choices visible.</a>
 <a href="#section-3">ARO abstract coauthor.</a>
+<a href="#test-evidence">Eleven existing helper checks, rerun.</a>
 </nav>
 <div class="story">
 <section class="story-section" id="section-1">
@@ -145,6 +146,31 @@
 </div>
 </section>
 
+<section class="story-section" id="test-evidence">
+<div class="section-label">Executed evidence</div>
+<div class="story-copy">
+<h2>Eleven existing helper checks, rerun.</h2>
+<p>The project’s existing MATLAB test suite passed all 11 checks when rerun for this portfolio on 26 September 2026. The checks cover angle conventions, nearest saved location and frequency, stability flags, valid field locations, animation scale, phase unwrapping, material-point mapping, and agreement between selected-point and field calculations.</p>
+<p>The projection helper uses the convention that 0° returns transverse displacement and 90° returns radial displacement. The plot below uses synthetic complex inputs to make the effect of a 45° viewing angle visible.</p>
+<div class="equation">u<sub>projected</sub> = cos(θ) u<sub>transverse</sub> + sin(θ) u<sub>radial</sub>
+</div>
+<p class="scope-note">These are helper-level consistency checks on synthetic fixtures. They do not validate the full cochlear model against experimental data.</p>
+<div class="evidence-links">
+<a href="../assets/cochlear-checks.txt" target="_blank" rel="noopener">
+<span>MATLAB test record</span>
+<small>11 of 11 passed · synthetic fixtures · MATLAB R2025a</small>
+<b aria-hidden="true">↗</b>
+</a>
+</div>
+</div>
+</section>
+<figure class="plot-evidence">
+<a class="zoom" data-zoom href="../assets/cochlear-projection.webp" aria-label="Enlarge: Synthetic displacement projection curves at zero, forty-five and ninety degrees">
+<img src="../assets/cochlear-projection.webp" width="1421" height="810" alt="Synthetic displacement projection curves at zero, forty-five and ninety degrees" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Plot generated using the project’s projection helper. Synthetic inputs; not an unpublished cochlear simulation result.</figcaption>
+</figure>
 </div>
 <a class="next-project" href="syringe.html">
 <span class="eyebrow">Next project</span>

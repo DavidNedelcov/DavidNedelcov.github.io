@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When linear beam theory stops fitting. — David Nedelcov</title>
+<meta name="description" content="Two load cases, a nonlinear finite-element model, and an analytical comparison that shows why the assumptions matter.">
+<meta name="theme-color" content="#f6f5f0">
+<link rel="canonical" href="https://davidnedelcov.github.io/projects/cantilever.html">
+<meta property="og:title" content="When linear beam theory stops fitting. — David Nedelcov">
+<meta property="og:description" content="Two load cases, a nonlinear finite-element model, and an analytical comparison that shows why the assumptions matter.">
+<meta property="og:image" content="https://davidnedelcov.github.io/assets/beam-high-displacement.webp">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../site.js" defer>
+</script>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header wrap">
+<a class="wordmark" href="../index.html">David Nedelcov<span>Biomedical engineering</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#contact">Contact</a>
+<a class="resume" href="../assets/David_Nedelcov_Resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span>
+</a>
+</nav>
+</header>
+<main id="main" class="wrap case">
+<a class="back" href="../index.html#work">← All projects</a>
+<div class="eyebrow">07 / Nonlinear mechanics</div>
+<h1>When linear beam theory stops fitting.</h1>
+<p class="case-dek">Two load cases, a nonlinear finite-element model, and an analytical comparison that shows why the assumptions matter.</p>
+<dl class="project-meta">
+<div>
+<dt>My contribution</dt>
+<dd>Model setup · Analysis · Analytical comparison · Report</dd>
+</div>
+<div>
+<dt>Context</dt>
+<dd>BMED 4754 · September 2026<br>Individual coursework</dd>
+</div>
+<div>
+<dt>Tools & methods</dt>
+<dd>FEBio · Neo-Hookean elasticity · Beam theory</dd>
+</div>
+</dl>
+<figure class="case-cover fea-cover">
+<a class="zoom" data-zoom href="../assets/beam-high-displacement.webp" aria-label="Enlarge: Bent cantilever displacement contour">
+<img src="../assets/beam-high-displacement.webp" width="1402" height="794" alt="Bent cantilever displacement contour" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>The high-load result from the original analysis.</figcaption>
+</figure>
+<nav class="case-contents" aria-label="Case study sections">
+<span>In this project</span>
+<a href="#question">How far can a small-deflection equation take you?</a>
+<a href="#comparison">Compare the same displacement component.</a>
+<a href="#interpretation">The comparison exposes the model assumptions.</a>
+<a href="#source">Read the original analysis.</a>
+</nav>
+<div class="story">
+<section class="story-section" id="question">
+<div class="section-label">01 / Question</div>
+<div class="story-copy">
+<h2>How far can a small-deflection equation take you?</h2>
+<p>I compared two FEBio cantilever simulations with the linear beam equation. The beam was 10 mm long and 1 mm in diameter, with a clamped base and a transverse force at the free-end center node.</p>
+<p>The material was Neo-Hookean, with E = 1 MPa and ν = 0.3. The solid model used 1,536 Hex8 elements and 1,881 nodes. I evaluated separate 0.005 N and 0.0005 N load cases.</p>
+</div>
+</section>
+<div class="image-pair">
+<figure class="">
+<a class="zoom" data-zoom href="../assets/beam-mesh.webp" aria-label="Enlarge: Original cylindrical cantilever mesh in FEBio">
+<img src="../assets/beam-mesh.webp" width="546" height="1028" alt="Original cylindrical cantilever mesh in FEBio" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Original beam geometry and mesh.</figcaption>
+</figure>
+<figure class="">
+<a class="zoom" data-zoom href="../assets/beam-high-displacement.webp" aria-label="Enlarge: High-load displacement contour of the cantilever">
+<img src="../assets/beam-high-displacement.webp" width="1402" height="794" alt="High-load displacement contour of the cantilever" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Displacement magnitude at 0.005 N. Original FEBio result.</figcaption>
+</figure>
+</div>
+<section class="story-section" id="comparison">
+<div class="section-label">02 / Quantitative comparison</div>
+<div class="story-copy">
+<h2>Compare the same displacement component.</h2>
+<p>The analytical equation predicts transverse tip deflection, not total displacement magnitude. My comparison used the magnitude of the FEBio tip displacement component along the loading direction.</p>
+<div class="equation">δ = FL³ / (3EI), &nbsp; I = πD⁴ / 64</div>
+<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Results from the original report">
+<table>
+<caption>Results from the original report</caption>
+<thead>
+<tr>
+<th scope="col">Quantity</th>
+<th scope="col">0.005 N</th>
+<th scope="col">0.0005 N</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Analytical transverse deflection</th>
+<td>33.953 mm</td>
+<td>3.395 mm</td>
+</tr>
+<tr>
+<th scope="row">FEBio transverse tip deflection magnitude</th>
+<td>7.726 mm</td>
+<td>1.832 mm</td>
+</tr>
+<tr>
+<th scope="row">FEBio maximum displacement magnitude</th>
+<td>8.543 mm</td>
+<td>1.833 mm</td>
+</tr>
+<tr>
+<th scope="row">Discrepancy relative to linear theory</th>
+<td>77.24%</td>
+<td>46.04%</td>
+</tr>
+<tr>
+<th scope="row">Maximum first principal strain</th>
+<td>0.1424</td>
+<td>0.02282</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<div class="image-pair">
+<figure class="">
+<a class="zoom" data-zoom href="../assets/beam-low-displacement.webp" aria-label="Enlarge: Low-load cantilever displacement contour">
+<img src="../assets/beam-low-displacement.webp" width="1142" height="767" alt="Low-load cantilever displacement contour" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Displacement magnitude at 0.0005 N.</figcaption>
+</figure>
+<figure class="">
+<a class="zoom" data-zoom href="../assets/beam-high-strain.webp" aria-label="Enlarge: First principal strain contour for the high-load cantilever">
+<img src="../assets/beam-high-strain.webp" width="1235" height="714" alt="First principal strain contour for the high-load cantilever" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>First principal strain at 0.005 N.</figcaption>
+</figure>
+</div>
+<section class="story-section" id="interpretation">
+<div class="section-label">03 / Interpretation</div>
+<div class="story-copy">
+<h2>The comparison exposes the model assumptions.</h2>
+<p>At the higher load, the linear equation predicts a deflection more than three times the original beam length. Even the lower-load prediction is about one-third of that length. Neither is a clean small-deflection benchmark.</p>
+<p>The numerical transverse displacement increased by about 4.22× for a 10× increase in force. That response is inconsistent with a purely linear load–deflection relationship and is consistent with the need to consider finite deformation.</p>
+<p>A concentrated nodal load, a fully fixed end face, and one mesh density add further limitations. This is an analytical comparison, not experimental validation or a completed mesh-convergence study.</p>
+</div>
+</section>
+<section class="story-section" id="source">
+<div class="section-label">04 / Evidence</div>
+<div class="story-copy">
+<h2>Read the original analysis.</h2>
+<div class="evidence-links">
+<a href="../assets/cantilever-report.pdf" target="_blank" rel="noopener">
+<span>Cantilever report</span>
+<small>14 pages · geometry, setup, contours, comparison, and limitations</small>
+<b aria-hidden="true">↗</b>
+</a>
+</div>
+</div>
+</section>
+</div>
+<a class="next-project" href="contact.html">
+<span class="eyebrow">Next project</span>
+<span>Flat-punch contact mechanics <span aria-hidden="true">↗</span>
+</span>
+</a>
+</main>
+<footer class="wrap footer">
+<a href="../index.html">David Nedelcov</a>
+<span>Georgia Tech · Atlanta, GA</span>
+<a href="#top">Back to top ↑</a>
+</footer>
+<dialog class="lightbox" aria-label="Expanded project image">
+<button class="close" aria-label="Close expanded image">Close ×</button>
+<img alt="">
+<p>
+</p>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,17 @@
+Cochlear visualization helper checks
+Executed 26 September 2026 using MATLAB R2025a.
+Synthetic fixtures only; no research simulation or participant data.
+
+runCochlearVisualizationTests/testProjectDisplacement | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testValidateAngle | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testPerpendicularOHCObservationAngle | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testValidateNearestLocationAndFrequency | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testDetectSimulationStabilityUnknown | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testDetectSimulationStabilityUnstableFlag | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testIsPointInDisplacementField | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testAnimationScaleIsRealDisplacementMultiplier | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testUnwrappedPhaseCycles | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testMaterialPointMapping | passed=1 | failed=0 | incomplete=0
+runCochlearVisualizationTests/testPointResponseMatchesFieldShapeFunctions | passed=1 | failed=0 | incomplete=0
+
+Passed: 11 of 11

@@ -1,0 +1,25 @@
+{
+  "label": "Synthetic demonstration using project processing functions; not participant data",
+  "date": "2026-09-26",
+  "grid_shape": [
+    31,
+    11
+  ],
+  "mapped_sensor_channels": 261,
+  "peak_input_units": 15.0,
+  "mean_input_units": 2.1915708812260535,
+  "computed_grid_x": 5.055944055944057,
+  "computed_grid_y": 16.27272727272727,
+  "active_cells_after_opening": 44,
+  "connected_components": 2,
+  "checks": {
+    "header_mapping_matches_input": true,
+    "missing_cells_preserved_as_NaN": true,
+    "two_components_after_opening": true,
+    "peak_pressure_matches_input": true
+  },
+  "source_sha256": {
+    "Operations.py": "4e952561073db9f14ab3d4ea49b25997f5148ef3068adb28e0195d2fd0a47f3d",
+    "arraygen.py": "516479edfb7d5369d1870a434c432f9f9d45c6ab8cbd6c7dceebd4f42aff4c62"
+  }
+}

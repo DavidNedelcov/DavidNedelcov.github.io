@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flat-punch contact mechanics. — David Nedelcov</title>
+<meta name="description" content="A contact model built to compare pressure and reaction force with analytical theory, including the setup change that resolved a rigid-body instability.">
+<meta name="theme-color" content="#f6f5f0">
+<link rel="canonical" href="https://davidnedelcov.github.io/projects/contact.html">
+<meta property="og:title" content="Flat-punch contact mechanics. — David Nedelcov">
+<meta property="og:description" content="A contact model built to compare pressure and reaction force with analytical theory, including the setup change that resolved a rigid-body instability.">
+<meta property="og:image" content="https://davidnedelcov.github.io/assets/contact-assembly.webp">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../site.js" defer>
+</script>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header wrap">
+<a class="wordmark" href="../index.html">David Nedelcov<span>Biomedical engineering</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#contact">Contact</a>
+<a class="resume" href="../assets/David_Nedelcov_Resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span>
+</a>
+</nav>
+</header>
+<main id="main" class="wrap case">
+<a class="back" href="../index.html#work">← All projects</a>
+<div class="eyebrow">08 / Contact & verification</div>
+<h1>Flat-punch contact mechanics.</h1>
+<p class="case-dek">A contact model built to compare pressure and reaction force with analytical theory, including the setup change that resolved a rigid-body instability.</p>
+<dl class="project-meta">
+<div>
+<dt>My contribution</dt>
+<dd>Contact setup · Mesh refinement · Result extraction · Comparison</dd>
+</div>
+<div>
+<dt>Context</dt>
+<dd>BMED 4754 · September 2026<br>Individual coursework</dd>
+</div>
+<div>
+<dt>Tools & methods</dt>
+<dd>FEBio · Hex8 mesh · Surface contact · Sneddon comparison</dd>
+</div>
+</dl>
+<figure class="case-cover fea-cover">
+<a class="zoom" data-zoom href="../assets/contact-assembly.webp" aria-label="Enlarge: FEBio flat-ended cylindrical punch above an elastic block">
+<img src="../assets/contact-assembly.webp" width="1800" height="982" alt="FEBio flat-ended cylindrical punch above an elastic block" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Original model assembly.</figcaption>
+</figure>
+<nav class="case-contents" aria-label="Case study sections">
+<span>In this project</span>
+<a href="#setup">Resolve the contact region without refining everything.</a>
+<a href="#stability">Remove a free rotation without overconstraining the punch.</a>
+<a href="#results">Look beyond the brightest contour value.</a>
+<a href="#judgment">A sharp edge changes what is worth comparing.</a>
+<a href="#source">Follow the setup through to the comparison.</a>
+</nav>
+<div class="story">
+<section class="story-section" id="setup">
+<div class="section-label">01 / Setup</div>
+<div class="story-copy">
+<h2>Resolve the contact region without refining everything.</h2>
+<p>I modeled a 4 mm diameter cylindrical punch indenting a 20 × 20 × 10 mm elastic block. A locally refined Hex8 mesh concentrated elements beneath the punch and near the circular contact edge.</p>
+<p>The block modulus was 10 MPa and the punch modulus was 500 MPa, with ν = 0.3 for both. That made the punch 50 times stiffer, but still elastic. The model used 15,168 elements in total.</p>
+</div>
+</section>
+<div class="image-pair">
+<figure class="">
+<a class="zoom" data-zoom href="../assets/contact-assembly.webp" aria-label="Enlarge: Original FEBio punch and block assembly">
+<img src="../assets/contact-assembly.webp" width="1800" height="982" alt="Original FEBio punch and block assembly" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Punch and block geometry in FEBio Studio.</figcaption>
+</figure>
+<figure class="">
+<a class="zoom" data-zoom href="../assets/contact-mesh.webp" aria-label="Enlarge: Locally refined mesh beneath the circular punch">
+<img src="../assets/contact-mesh.webp" width="849" height="810" alt="Locally refined mesh beneath the circular punch" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Local refinement around the contact region.</figcaption>
+</figure>
+</div>
+<section class="story-section" id="stability">
+<div class="section-label">02 / A setup correction</div>
+<div class="story-copy">
+<h2>Remove a free rotation without overconstraining the punch.</h2>
+<p>The block base was fixed; the punch top received prescribed vertical displacement. A centerline node restrained the punch’s horizontal translation. An additional off-axis tangential restraint removed the remaining rigid rotation about the punch axis.</p>
+<p>The report documents that correcting this remaining free rotation resolved an initial instability in the 0.10 mm case. Frictionless sliding-elastic contact connected the punch’s bottom surface to the block’s top surface.</p>
+</div>
+</section>
+<section class="story-section" id="results">
+<div class="section-label">03 / Results</div>
+<div class="story-copy">
+<h2>Look beyond the brightest contour value.</h2>
+<p>Both the 0.10 mm and 0.80 mm indentation runs reached normal termination. I compared the extracted surface contact pressure and integrated reaction with the Sneddon flat-punch solution.</p>
+<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Integrated reaction-force comparison">
+<table>
+<caption>Integrated reaction-force comparison</caption>
+<thead>
+<tr>
+<th scope="col">Indentation</th>
+<th scope="col">Analytical force</th>
+<th scope="col">FEBio reaction</th>
+<th scope="col">Signed difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">0.10 mm</th>
+<td>4.3956 N</td>
+<td>5.2889 N</td>
+<td>+20.3%</td>
+</tr>
+<tr>
+<th scope="row">0.80 mm</th>
+<td>35.1648 N</td>
+<td>32.9906 N</td>
+<td>−6.2%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Independent integration of the face-pressure data gave 5.3183 N and 32.9085 N, within 0.6% of the reported reactions. That is a consistency check on extraction and sign convention; it is not a substitute for physical validation.</p>
+</div>
+</section>
+<figure class="plot-evidence">
+<a class="zoom" data-zoom href="../assets/contact-pressure-comparison.webp" aria-label="Enlarge: Original graph comparing FEBio radial contact pressure with Sneddon theory">
+<img src="../assets/contact-pressure-comparison.webp" width="1278" height="827" alt="Original graph comparing FEBio radial contact pressure with Sneddon theory" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Original report graph. Analytical curves stop before the singular edge; FEBio samples are face-based contact values.</figcaption>
+</figure>
+<section class="story-section" id="judgment">
+<div class="section-label">04 / Engineering judgment</div>
+<div class="story-copy">
+<h2>A sharp edge changes what is worth comparing.</h2>
+<p>The ideal flat-punch solution becomes singular at its edge. The finite-element peak there depends on mesh resolution and contact interpolation, so I used integrated reaction force and off-edge pressure values rather than treating the maximum contour pressure as a converged quantity.</p>
+<p>The finite block, fixed base, elastic punch, and larger deformation also violate the ideal half-space assumptions. The closer total force in the larger-indentation case does not prove that case is more physically accurate: several effects can offset one another.</p>
+</div>
+</section>
+<section class="story-section" id="source">
+<div class="section-label">05 / Evidence</div>
+<div class="story-copy">
+<h2>Follow the setup through to the comparison.</h2>
+<div class="evidence-links">
+<a href="../assets/contact-report.pdf" target="_blank" rel="noopener">
+<span>Flat-punch contact report</span>
+<small>12 pages · mesh, constraints, contact settings, solver completion, and extracted pressures</small>
+<b aria-hidden="true">↗</b>
+</a>
+</div>
+</div>
+</section>
+</div>
+<a class="next-project" href="vertebra.html">
+<span class="eyebrow">Next project</span>
+<span>From MRI to a loaded vertebra <span aria-hidden="true">↗</span>
+</span>
+</a>
+</main>
+<footer class="wrap footer">
+<a href="../index.html">David Nedelcov</a>
+<span>Georgia Tech · Atlanta, GA</span>
+<a href="#top">Back to top ↑</a>
+</footer>
+<dialog class="lightbox" aria-label="Expanded project image">
+<button class="close" aria-label="Close expanded image">Close ×</button>
+<img alt="">
+<p>
+</p>
+</dialog>
+</body>
+</html>
