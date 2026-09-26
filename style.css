@@ -279,3 +279,5 @@ th,td{font-size:13px}
 @media(max-width:760px){.case-contents{gap:12px 20px;padding:22px 0;font-size:11px}.engineering-table table{min-width:620px}.engineering-table{border-right:2px solid var(--line)}.mechanism-parts,.model-spec{grid-template-columns:1fr;gap:22px}.mechanism-parts>div,.model-spec>div{padding-top:13px}.source-sketch{margin:30px 0 45px}.source-sketch img{max-height:420px}.risk-chain{gap:8px}.risk-chain span{font-size:12px}.test-steps{padding-left:18px}.test-steps li{padding-left:4px;font-size:16px}}
 .story-copy{min-width:0}.engineering-table{max-width:100%}
 @media(max-width:760px){.engineering-table::before{content:'Scroll to compare →';display:block;position:sticky;left:0;font:10px var(--mono);color:var(--muted);padding:4px 0 12px}}
+
+img{height:auto}
