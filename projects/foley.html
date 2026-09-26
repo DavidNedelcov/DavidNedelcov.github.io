@@ -55,8 +55,20 @@
 </a>
 <figcaption>The team’s final connector concept, shown in CAD.</figcaption>
 </figure>
+<nav class="case-contents" aria-label="Case study sections">
+<span>In this project</span>
+<a href="#section-1">What happens when the drainage tube gets caught?</a>
+<a href="#section-2">Why we changed direction.</a>
+<a href="#concepts">Two places to intervene.</a>
+<a href="#section-4">A connector that releases—without releasing too easily.</a>
+<a href="#iterations">What changed between builds.</a>
+<a href="#mechanism">Three jobs for the connector assembly.</a>
+<a href="#section-7">Testing the pull from four directions.</a>
+<a href="#test-method">What the bench experiment measured.</a>
+<a href="#section-9">Reconnection and repeated use.</a>
+</nav>
 <div class="story">
-<section class="story-section">
+<section class="story-section" id="section-1">
 <div class="section-label">01 / The problem</div>
 <div class="story-copy">
 <h2>What happens when the drainage tube gets caught?</h2>
@@ -64,7 +76,7 @@
 <p>I contributed to ideation, CAD, fabrication, testing, calculations, documentation, and the presentation in a five-person team. The prototypes and test results on this page are shared team work.</p>
 </div>
 </section>
-<section class="story-section">
+<section class="story-section" id="section-2">
 <div class="section-label">02 / Changing direction</div>
 <div class="story-copy">
 <h2>Why we changed direction.</h2>
@@ -77,12 +89,92 @@
 <p>The final design kept the magnetic breakaway mechanism on the drainage tubing and omitted the tip sleeve. </p>
 </div>
 </section>
-<section class="story-section">
+<section class="story-section" id="concepts">
+<div class="section-label">Design reasoning</div>
+<div class="story-copy">
+<h2>Two places to intervene.</h2>
+<p>The design space included changes inside the body and changes to the external drainage line. That distinction affected what we could prototype and test with the tools available.</p>
+<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Concept comparison from the team design reports">
+<table>
+<caption>Concept comparison from the team design reports</caption>
+<thead>
+<tr>
+<th scope="col">Direction</th>
+<th scope="col">Intended mechanism</th>
+<th scope="col">Constraint revealed in the work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Catheter tip / protective sleeve</th>
+<td>Reduce contact during insertion.</td>
+<td>The sleeve could not be fully inserted into the model urethra; added diameter was a practical constraint.</td>
+</tr>
+<tr>
+<th scope="row">Foldable retention cushion</th>
+<td>Fold under a pull while retaining the catheter during normal use.</td>
+<td>The early cushion came out at 8.3 N but was difficult to insert. Intermediate versions required too much force; a smaller, double-tapered version reached 12.3 N.</td>
+</tr>
+<tr>
+<th scope="row">External magnetic connector</th>
+<td>Interrupt the force path along the drainage tubing.</td>
+<td>The connector needed to resist ordinary movement, detach under the project target, and accommodate containment and reconnection.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The retention cushion ranked first in the early Pugh evaluation, but that ranking was a screening result. Prototyping exposed constraints the matrix alone could not resolve. The final design retained the external breakaway connection.</p>
+</div>
+</section>
+<figure class="source-sketch">
+<a class="zoom" href="../assets/foley-sketch-11-0.webp" data-zoom aria-label="Enlarge: Original team sketch of a catheter drainage concept">
+<img src="../assets/foley-sketch-11-0.webp" alt="Original team sketch of a catheter drainage concept" loading="lazy">
+<span class="enlarge" aria-hidden="true">↗</span>
+</a>
+<figcaption>Original team concept sketch from the design history file. Some features shown here were exploratory and are not part of the final prototype.</figcaption>
+</figure>
+<section class="story-section" id="section-4">
 <div class="section-label">03 / Iteration</div>
 <div class="story-copy">
 <h2>A connector that releases—without releasing too easily.</h2>
 <p>We started with 25 concepts and used Benefit–Effort and Pugh matrices to narrow the options. The magnetic breakaway concept moved into hands-on testing.</p>
-<p>The first prototype separated at 3.2 N, below our 13 N design target. But small movements could disconnect it, and the containment bag jammed during reconnection. A later prototype increased resistance to 6.9 N. The final design used interlocking printed housings to guide the connection and a bag that could be adjusted using rings.</p>
+
+</div>
+</section>
+<section class="story-section" id="iterations">
+<div class="section-label">Prototype record</div>
+<div class="story-copy">
+<h2>What changed between builds.</h2>
+<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Prototype observations from the design reports">
+<table>
+<caption>Prototype observations from the design reports</caption>
+<thead>
+<tr>
+<th scope="col">Build</th>
+<th scope="col">Observed result</th>
+<th scope="col">What the next build addressed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Generation 0</th>
+<td>3.2 N detachment. Light movement could separate the magnets; the bag jammed during reconnection.</td>
+<td>Increase retention and change how fluid was contained.</td>
+</tr>
+<tr>
+<th scope="row">Generation 1</th>
+<td>6.9 N detachment, still below the project’s 13 N target.</td>
+<td>Develop a more defined connector geometry and a workable containment arrangement.</td>
+</tr>
+<tr>
+<th scope="row">Final build</th>
+<td>Printed interlocking housings, neodymium magnets, containment bag, and retaining rings.</td>
+<td>Verify detachment at several pull angles; keep the tip sleeve out of the final design.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="scope-note">The early force values describe different prototype configurations. Final verification used a separate build and 24 trials.</p>
 </div>
 </section>
 <div class="image-pair">
@@ -108,7 +200,31 @@
 </a>
 <figcaption>Exploded team CAD: connector housings, magnets, containment components, and tubing.</figcaption>
 </figure>
-<section class="story-section">
+<section class="story-section" id="mechanism">
+<div class="section-label">Mechanism</div>
+<div class="story-copy">
+<h2>Three jobs for the connector assembly.</h2>
+<div class="mechanism-parts">
+<div>
+<span>01</span>
+<h3>Release</h3>
+<p>Magnets form a separable connection in the drainage line. Their retention must be enough for handling but low enough to meet the breakaway target.</p>
+</div>
+<div>
+<span>02</span>
+<h3>Guide</h3>
+<p>The male–female housing geometry aligns the connector halves. The report describes an overhang intended to resist immediate separation during small changes in angle.</p>
+</div>
+<div>
+<span>03</span>
+<h3>Contain</h3>
+<p>A polyethylene bag surrounds the junction. Rings hold and adjust the bag so it can accommodate separation and reconnection.</p>
+</div>
+</div>
+<p class="scope-note">PLA was used for the printed prototype. It was not established as a production material for a clinical device.</p>
+</div>
+</section>
+<section class="story-section" id="section-7">
 <div class="section-label">04 / Verification</div>
 <div class="story-copy">
 <h2>Testing the pull from four directions.</h2>
@@ -137,7 +253,57 @@
 </a>
 <figcaption>Final prototype and force gauge. This is the physical team build used for verification.</figcaption>
 </figure>
-<section class="story-section">
+<section class="story-section" id="test-method">
+<div class="section-label">Test method</div>
+<div class="story-copy">
+<h2>What the bench experiment measured.</h2>
+<ol class="test-steps">
+<li>
+<strong>Assemble the system.</strong> Connect the catheter, tubing, magnetic breakaway, containment bag, and collection bag. The team used a model urethra for the verification setup.</li>
+<li>
+<strong>Set the pull direction.</strong> Test 0°, 30°, 60°, and 90° using an angle measure.</li>
+<li>
+<strong>Pull to separation.</strong> Use the force gauge to record the force required to activate the breakaway.</li>
+<li>
+<strong>Repeat and compare.</strong> Complete six trials per angle and compare each result with the 13 N project criterion.</li>
+</ol>
+<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Evidence and limits of the final test">
+<table>
+<caption>Evidence and limits of the final test</caption>
+<thead>
+<tr>
+<th scope="col">Question</th>
+<th scope="col">What the report supports</th>
+<th scope="col">What remains to be established</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Does it release below the project target?</th>
+<td>All 24 recorded trials were below 13 N.</td>
+<td>Repeatability beyond this sample and with more manufactured units.</td>
+</tr>
+<tr>
+<th scope="row">Does pull direction matter?</th>
+<td>Four directions were tested. Reported extremes were 2.4 N at 0° and 6.3 N at 90°.</td>
+<td>Full per-angle distributions and uncertainty; the excerpt does not include the raw trial table.</td>
+</tr>
+<tr>
+<th scope="row">Does it resist nuisance detachment?</th>
+<td>Early prototypes exposed sensitivity to small movements.</td>
+<td>A quantitative lower retention criterion and a representative movement protocol.</td>
+</tr>
+<tr>
+<th scope="row">Is fluid contained after release?</th>
+<td>Containment was incorporated into the prototype.</td>
+<td>A quantified leak test, repeated reconnection testing, and durability testing.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="story-section" id="section-9">
 <div class="section-label">05 / Next questions</div>
 <div class="story-copy">
 <h2>Reconnection and repeated use.</h2>

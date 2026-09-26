@@ -53,8 +53,15 @@
 <p>Geometry · motion · frequency</p>
 <small>Computational cochlear mechanics · Georgia Tech</small>
 </div>
+<nav class="case-contents" aria-label="Case study sections">
+<span>In this project</span>
+<a href="#section-1">Understanding motion in the cochlea.</a>
+<a href="#section-2">Explore results without rewriting the plotting script.</a>
+<a href="#interface-detail">Keep the scientific choices visible.</a>
+<a href="#section-3">ARO abstract coauthor.</a>
+</nav>
 <div class="story">
-<section class="story-section">
+<section class="story-section" id="section-1">
 <div class="section-label">01 / Research context</div>
 <div class="story-copy">
 <h2>Understanding motion in the cochlea.</h2>
@@ -62,7 +69,7 @@
 <p>The research involves motion in the organ of Corti, including how three-dimensional anatomy and fluid coupling affect the model’s response.</p>
 </div>
 </section>
-<section class="story-section">
+<section class="story-section" id="section-2">
 <div class="section-label">02 / Analysis interface</div>
 <div class="story-copy">
 <h2>Explore results without rewriting the plotting script.</h2>
@@ -88,7 +95,47 @@
 <p class="scope-note">The application is in development for research analysis. </p>
 </div>
 </section>
-<section class="story-section">
+<section class="story-section" id="interface-detail">
+<div class="section-label">Interface design</div>
+<div class="story-copy">
+<h2>Keep the scientific choices visible.</h2>
+<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Controls and analysis views in the MATLAB application">
+<table>
+<caption>Controls and analysis views in the MATLAB application</caption>
+<thead>
+<tr>
+<th scope="col">Input or view</th>
+<th scope="col">Research purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Saved frequency sweep</th>
+<td>Select the model output to inspect.</td>
+</tr>
+<tr>
+<th scope="row">Longitudinal location and frequency</th>
+<td>Inspect a specific location and stimulus condition.</td>
+</tr>
+<tr>
+<th scope="row">Viewing angle and grid resolution</th>
+<td>Control the projection and sampled representation.</td>
+</tr>
+<tr>
+<th scope="row">Baseline and deformed geometry</th>
+<td>Inspect how modeled structures move relative to their starting geometry.</td>
+</tr>
+<tr>
+<th scope="row">Magnitude, phase, and landmark trajectories</th>
+<td>Compare response size, timing, and spatial motion.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The application separates loading, mechanics, geometry, plotting, and validation so that an issue can be investigated at the relevant stage. The interface is still in development; research use requires checking the projected outputs against the underlying model calculations.</p>
+</div>
+</section>
+<section class="story-section" id="section-3">
 <div class="section-label">03 / Research contribution</div>
 <div class="story-copy">
 <h2>ARO abstract coauthor.</h2>
@@ -97,6 +144,7 @@
 <p class="source-note">Research abstract · Coauthor</p>
 </div>
 </section>
+
 </div>
 <a class="next-project" href="syringe.html">
 <span class="eyebrow">Next project</span>

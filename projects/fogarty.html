@@ -55,8 +55,17 @@
 </a>
 <figcaption>One of the two valve components I modeled.</figcaption>
 </figure>
+<nav class="case-contents" aria-label="Case study sections">
+<span>In this project</span>
+<a href="#section-1">Start with the physical part.</a>
+<a href="#section-2">Follow the device through its use.</a>
+<a href="#section-3">CAD and risk documentation.</a>
+<a href="#risk-examples">Trace the error all the way to the harm.</a>
+<a href="#risk-reasoning">Likelihood has more than one step.</a>
+<a href="#next-verification">What would need verification next.</a>
+</nav>
 <div class="story">
-<section class="story-section">
+<section class="story-section" id="section-1">
 <div class="section-label">01 / Reverse engineering</div>
 <div class="story-copy">
 <h2>Start with the physical part.</h2>
@@ -79,34 +88,81 @@
 <figcaption>Valve component 2 — my CAD model.</figcaption>
 </figure>
 </div>
-<section class="story-section">
+<section class="story-section" id="section-2">
 <div class="section-label">02 / Risk analysis</div>
 <div class="story-copy">
 <h2>Follow the device through its use.</h2>
-<p>I created the use FMEA and contributed to the process and design FMEAs. The use analysis followed six tasks from the instructions for use and identified 22 failure modes, including nine rated unacceptable before mitigation.</p>
+<p>I created the use FMEA and contributed to the process and design FMEAs. The use analysis followed six tasks from the instructions for use: prepare, purge, inspect, place, inflate, and withdraw. For each scenario, it connected a use error to a hazardous situation, potential harm, likelihood, severity, and existing controls.</p>
 <p>The analysis covered hazards such as air embolism, vessel injury, component separation, and excessive withdrawal force. Linking each hazard to a use step made the risk assessment specific to how the device is handled.</p>
-<div class="result-strip">
-<div>
-<strong>6</strong>
-<span>use tasks</span>
-</div>
-<div>
-<strong>22</strong>
-<span>failure modes</span>
-</div>
-<div>
-<strong>9</strong>
-<span>unacceptable before mitigation</span>
-</div>
-</div>
 </div>
 </section>
-<section class="story-section">
+<section class="story-section" id="section-3">
 <div class="section-label">03 / Scope</div>
 <div class="story-copy">
 <h2>CAD and risk documentation.</h2>
 <p>This semester project connected physical geometry with use-related risk and design-control documentation. My direct contributions were the two valve models and use FMEA, with collaborative work on the other risk analyses.</p>
 <p class="source-note">Source: my CAD renders, use FMEA, and BMED 4823 project documentation.</p>
+</div>
+</section>
+<section class="story-section" id="risk-examples">
+<div class="section-label">Worked examples</div>
+<div class="story-copy">
+<h2>Trace the error all the way to the harm.</h2>
+<p>These examples are condensed from my course use FMEA. “Existing control” means a control documented in that analysis; it does not mean I designed or verified a new mitigation.</p>
+<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Selected use-FMEA scenarios">
+<table>
+<caption>Selected use-FMEA scenarios</caption>
+<thead>
+<tr>
+<th scope="col">Use error</th>
+<th scope="col">Hazardous situation and potential harm</th>
+<th scope="col">Existing control recorded in the worksheet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Purge: residual air goes unnoticed</th>
+<td>Air can enter circulation after balloon rupture; potential air embolism.</td>
+<td>Instructions to purge and remove air, with specified inflation media.</td>
+</tr>
+<tr>
+<th scope="row">Place: advance against resistance</th>
+<td>The catheter is forced through the vessel; potential dissection or perforation.</td>
+<td>Instruction not to advance against resistance.</td>
+</tr>
+<tr>
+<th scope="row">Withdraw: continue pulling against adherent material</th>
+<td>High extraction force; potential balloon rupture, catheter separation, or vessel injury.</td>
+<td>Contraindication for fibrotic, adherent, or calcified material.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All three examples were rated unacceptable in the worksheet despite the listed controls. A warning being present did not automatically make the scenario acceptable in the assessment.</p>
+<p class="source-note">Condensed from uFMEA Fogarty, risk rows 7, 35, and 66. Course analysis; not clinical instructions or a validated regulatory risk assessment.</p>
+</div>
+</section>
+<section class="story-section" id="risk-reasoning">
+<div class="section-label">Risk reasoning</div>
+<div class="story-copy">
+<h2>Likelihood has more than one step.</h2>
+<p>The worksheet separated the likelihood of a hazardous situation from the likelihood that the situation causes harm. That distinction helps explain why the same use error can lead to several scenarios, and why a count of numbered risk rows is not the same as a count of unique failure modes.</p>
+<div class="risk-chain">
+<span>Use error</span>
+<b aria-hidden="true">→</b>
+<span>Hazardous situation</span>
+<b aria-hidden="true">→</b>
+<span>Harm</span>
+</div>
+<p>Severity describes the harm, while the likelihood terms describe how the scenario can progress. The resulting rating identifies which scenarios need further mitigation work.</p>
+</div>
+</section>
+<section class="story-section" id="next-verification">
+<div class="section-label">Engineering handoff</div>
+<div class="story-copy">
+<h2>What would need verification next.</h2>
+<p>My deliverables were reverse-engineered CAD and risk documentation. A next phase would need to turn proposed mitigations into specific verification activities: checking that geometry matches the physical components, defining functional requirements, and evaluating use-related controls under representative conditions.</p>
+<p class="scope-note">Dimensional inspection results, manufacturing tolerances, and mitigation-verification results are not reported for this project. The renders alone do not establish those properties.</p>
 </div>
 </section>
 </div>

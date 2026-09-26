@@ -53,8 +53,15 @@
 <p>Measurement → processing → biomechanics</p>
 <small>Exoskeleton & Prosthetic Intelligent Controls · Georgia Tech</small>
 </div>
+<nav class="case-contents" aria-label="Case study sections">
+<span>In this project</span>
+<a href="#section-1">From collecting a signal to using it.</a>
+<a href="#section-2">Make the insole data interpretable.</a>
+<a href="#processing-detail">Preserve the spatial meaning of each channel.</a>
+<a href="#section-3">Compare the sensing platforms.</a>
+</nav>
 <div class="story">
-<section class="story-section">
+<section class="story-section" id="section-1">
 <div class="section-label">01 / Research</div>
 <div class="story-copy">
 <h2>From collecting a signal to using it.</h2>
@@ -62,7 +69,7 @@
 <p>The common thread is making measurements usable: calibrating the collection system, organizing sensor data, and preparing it for analysis.</p>
 </div>
 </section>
-<section class="story-section">
+<section class="story-section" id="section-2">
 <div class="section-label">02 / Processing</div>
 <div class="story-copy">
 <h2>Make the insole data interpretable.</h2>
@@ -88,7 +95,49 @@
 <p class="source-note">Workflow summary; no participant data are shown.</p>
 </div>
 </section>
-<section class="story-section">
+<section class="story-section" id="processing-detail">
+<div class="section-label">Data processing</div>
+<div class="story-copy">
+<h2>Preserve the spatial meaning of each channel.</h2>
+<p>The pressure-insole work starts with named sensel columns and places them in a fixed 31 × 11 map. The geometry of that map matters: the same pressure values in the wrong positions would describe a different contact pattern.</p>
+<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Processing work described in this project">
+<table>
+<caption>Processing work described in this project</caption>
+<thead>
+<tr>
+<th scope="col">Stage</th>
+<th scope="col">Output</th>
+<th scope="col">Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Map sensor channels</th>
+<td>Pressure measurements at defined grid locations.</td>
+<td>Preserves the spatial relationship between sensing elements.</td>
+</tr>
+<tr>
+<th scope="row">Extract pressure features</th>
+<td>Pressure and center-of-pressure measures.</td>
+<td>Summarizes loading and where it acts.</td>
+</tr>
+<tr>
+<th scope="row">Describe contact</th>
+<td>Active-sensor and connected-component features.</td>
+<td>Distinguishes the amount and spatial organization of contact.</td>
+</tr>
+<tr>
+<th scope="row">Prepare cross-system comparisons</th>
+<td>Synchronized measurements for analysis.</td>
+<td>Timing errors can change comparisons even when individual sensor signals look reasonable.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="scope-note">The thesis comparison is ongoing. This page describes processing scope; it does not report final model accuracy, repeatability, or a completed comparison between platforms.</p>
+</div>
+</section>
+<section class="story-section" id="section-3">
 <div class="section-label">03 / Thesis in progress</div>
 <div class="story-copy">
 <h2>Compare the sensing platforms.</h2>
@@ -97,6 +146,7 @@
 <p class="scope-note">This work is ongoing. Comparative performance and thesis conclusions are not yet reported here.</p>
 </div>
 </section>
+
 </div>
 <a class="next-project" href="cochlear.html">
 <span class="eyebrow">Next project</span>
