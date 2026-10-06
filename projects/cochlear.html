@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Looking inside a cochlear model. — David Nedelcov</title>
-<meta name="description" content="Cochlear mechanics research and a MATLAB interface for exploring how model geometry and motion change with frequency and viewing angle.">
+<title>A MATLAB interface for cochlear mechanics. — David Nedelcov</title>
+<meta name="description" content="A MATLAB research application by David Nedelcov for linked anatomical point selection, complex displacement analysis, model comparison, and cochlear motion visualization.">
 <meta name="theme-color" content="#f6f5f0">
 <link rel="canonical" href="https://davidnedelcov.github.io/projects/cochlear.html">
-<meta property="og:title" content="Looking inside a cochlear model. — David Nedelcov">
-<meta property="og:description" content="Cochlear mechanics research and a MATLAB interface for exploring how model geometry and motion change with frequency and viewing angle.">
-<meta property="og:image" content="https://davidnedelcov.github.io/assets/foley-bench.webp">
+<meta property="og:title" content="A MATLAB interface for cochlear mechanics. — David Nedelcov">
+<meta property="og:description" content="A MATLAB research application by David Nedelcov for linked anatomical point selection, complex displacement analysis, model comparison, and cochlear motion visualization.">
+<meta property="og:image" content="https://davidnedelcov.github.io/assets/meaud-gui-point-heatmap.webp">
 <meta property="og:type" content="website">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../style.css">
@@ -29,154 +29,30 @@
 </a>
 </nav>
 </header>
-<main id="main" class="wrap case" >
-<a class="back" href="../index.html#work">← All projects</a>
-<div class="eyebrow">05 / Computational research</div>
-<h1>Looking inside a cochlear model.</h1>
-<p class="case-dek">Cochlear mechanics research and a MATLAB interface for exploring how model geometry and motion change with frequency and viewing angle.</p>
+<main id="main" class="wrap case gui-case">
+<a class="back" href="../index.html#cochlear-gui">← All projects</a>
+<div class="eyebrow">05 / Research software · Meaud Lab</div>
+<h1>A MATLAB interface<br>for cochlear mechanics.</h1>
+<p class="case-dek">I’m building an analysis application for exploring how the organ of Corti moves. It brings model comparison, anatomical point tracking, complex displacement analysis, and motion visualization into one research workflow.</p>
 <dl class="project-meta">
-<div>
-<dt>My contribution</dt>
-<dd>Cochlear mechanics analysis · MATLAB interface development · Abstract coauthor</dd>
-</div>
-<div>
-<dt>Context</dt>
-<dd>Meaud Lab · Aug 2025–present<br>Interface in development</dd>
-</div>
-<div>
-<dt>Tools & methods</dt>
-<dd>MATLAB · Geometry projection · Scientific visualization</dd>
-</div>
+<div><dt>My contribution</dt><dd>Application architecture · Analysis workflows · Scientific visualization</dd></div>
+<div><dt>Context</dt><dd>Meaud Lab · Georgia Tech<br>GUI development · Fall 2026 · Ongoing</dd></div>
+<div><dt>Tools &amp; methods</dt><dd>MATLAB · Geometry mapping<br>Complex-valued displacement &amp; phase</dd></div>
 </dl>
-<div class="research-banner cochlear-banner">
-<span>MEAUD LAB</span>
-<p>Geometry · motion · frequency</p>
-<small>Computational cochlear mechanics · Georgia Tech</small>
-</div>
-<nav class="case-contents" aria-label="Case study sections">
-<span>In this project</span>
-<a href="#section-1">Understanding motion in the cochlea.</a>
-<a href="#section-2">Explore results without rewriting the plotting script.</a>
-<a href="#interface-detail">Keep the scientific choices visible.</a>
-<a href="#section-3">ARO abstract coauthor.</a>
-<a href="#test-evidence">Eleven existing helper checks, rerun.</a>
-</nav>
+<figure class="gui-figure gui-cover"><a class="zoom" href="../assets/meaud-gui-point-heatmap.webp" data-zoom aria-label="Enlarge: MATLAB GUI showing selected anatomical points, four frequency-response curves, and an angle–frequency response map"><img src="../assets/meaud-gui-point-heatmap.webp" alt="MATLAB GUI showing selected anatomical points, four frequency-response curves, and an angle–frequency response map" width="1640" height="1030" loading="lazy" decoding="async"><span class="enlarge" aria-hidden="true">↗</span></a><figcaption>Actual V2 application: selected-point responses and an angle–frequency map. Screenshots use synthetic displacement signals with the lab’s model geometry.</figcaption></figure>
+<nav class="case-contents" aria-label="Case study sections"><span>In this project</span><a href="#workflow">Analysis workflow</a><a href="#linked-points">Linked points</a><a href="#complex-response">Magnitude &amp; phase</a><a href="#longitudinal">Motion</a><a href="#test-evidence">Software verification</a></nav>
 <div class="story">
-<section class="story-section" id="section-1">
-<div class="section-label">01 / Research context</div>
-<div class="story-copy">
-<h2>Understanding motion in the cochlea.</h2>
-<p>I joined the Meaud Lab in August 2025 and have worked on computational cochlear mechanics for three semesters. This semester, my focus includes a MATLAB interface for inspecting model results.</p>
-<p>The research involves motion in the organ of Corti, including how three-dimensional anatomy and fluid coupling affect the model’s response.</p>
+<section class="story-section" id="workflow"><div class="section-label">01 / Research problem</div><div class="story-copy"><h2>Make multidimensional results practical to explore.</h2><p>A saved cochlear simulation contains complex displacement responses across position and frequency. The response observed at an anatomical point also depends on the direction from which motion is measured.</p><p>I built the interface around those scientific choices. Researchers can load multiple cases, choose locations and observation angles, compare views in parallel or overlay them, and move between geometry, response plots, and animation while retaining their analysis configuration.</p><ul class="gui-view-list" aria-label="Eight application views"><li>Geometry</li><li>Cross-sectional view</li><li>Animation</li><li>Frequency sweep</li><li>Displacement vs. position</li><li>Point response</li><li>Parameters</li><li>Longitudinal motion</li></ul></div></section>
+<section class="story-section" id="linked-points"><div class="section-label">02 / Anatomical correspondence</div><div class="story-copy"><h2>Track the same physical point across changing geometries.</h2><p>Selecting a point records its anatomical member and relative position along and across that member. The application maps that reference into each configuration, so a point on an outer hair cell remains attached to the corresponding structure as the geometry changes.</p><p>Linked markers carry through to the response plots. A cross-sectional locator identifies each selected point, while legends show the differences between cases. This keeps the curves connected to the anatomy that produced them.</p></div></section>
+<figure class="gui-figure"><a class="zoom" href="../assets/meaud-gui-cross-section.webp" data-zoom aria-label="Enlarge: Two cross-sectional displacement maps with corresponding points on the outer hair cell and reticular lamina"><img src="../assets/meaud-gui-cross-section.webp" alt="Two cross-sectional displacement maps with corresponding points on the outer hair cell and reticular lamina" width="1640" height="1030" loading="lazy" decoding="async"><span class="enlarge" aria-hidden="true">↗</span></a><figcaption>Two longitudinal locations at the same saved frequency and viewing angle. Points 1 and 2 retain their anatomical identity across both cross-sections.</figcaption></figure>
+<section class="story-section" id="complex-response"><div class="section-label">03 / Scientific conventions</div><div class="story-copy"><h2>Keep magnitude, phase, and reference consistent.</h2><p>The application projects radial and transverse complex displacement onto the observation direction. An angle of 0° selects transverse motion; 90° selects radial motion. A geometry-based control also sets the viewing direction perpendicular to the local outer hair cell.</p><p>Selected-point responses can use absolute displacement or the local basilar membrane (BM) as a reference. The BM reference produces a magnitude ratio and phase difference at the same location and frequency. Frequency-dependent phase is unwrapped and displayed in cycles; missing or zero references remain gaps.</p><p>Angular responses can be explored as a heatmap or as separate frequency and angle slices. Labels and units update with the selected component, quantity, and reference.</p></div></section>
+<figure class="gui-figure"><a class="zoom" href="../assets/meaud-gui-point-phase.webp" data-zoom aria-label="Enlarge: Detail of BM-referenced point responses, with magnitude ratios, phase differences in cycles, and a zero-to-180-degree angular slice"><img src="../assets/meaud-gui-point-phase.webp" alt="Detail of BM-referenced point responses, with magnitude ratios, phase differences in cycles, and a zero-to-180-degree angular slice" width="1576" height="610" loading="lazy" decoding="async"><span class="enlarge" aria-hidden="true">↗</span></a><figcaption>Point-response detail · Local BM reference, unwrapped phase, and separate frequency/angle slices. The signals are constructed for this interface demonstration.</figcaption></figure>
+<section class="story-section" id="longitudinal"><div class="section-label">04 / Longitudinal integration</div><div class="story-copy"><h2>Connect the motion overview to the moving junction.</h2><p>V2 integrates Tim Kim’s longitudinal organ-of-Corti formulation into my existing application. The view pairs an array of outer-hair-cell, phalangeal-process, and Deiters-cell structures with a closeup of the central junction’s trajectory.</p><p>The overview and closeup advance at the same cycle phase. Geometry and complex response interpolation are prepared before playback; persistent plot objects update within fixed axes. Attachment points use responses at their own longitudinal positions, and boundary checks keep them inside the saved mesh.</p><p>A <strong>Best place</strong> control locates the largest saved BM response at the selected frequency. Researchers can adjust structure count, spacing, displacement scale, and playback rate, then export the animation.</p></div></section>
+<figure class="gui-motion"><video controls loop muted playsinline preload="metadata" poster="../assets/meaud-gui-motion-poster.webp" width="1280" height="720" aria-label="Demonstration of longitudinal cochlear motion and the central junction trajectory" aria-describedby="motion-caption"><source src="../assets/meaud-gui-motion.mp4" type="video/mp4"><p><a href="../assets/meaud-gui-motion.mp4">Download the motion demonstration.</a></p></video><figcaption id="motion-caption">Animation exported by the application using demonstration signals. Motion is amplified for visibility; comparison playback is synchronized by cycle phase. <a href="../assets/meaud-gui-longitudinal.webp" target="_blank" rel="noopener">View the longitudinal GUI controls ↗</a></figcaption></figure>
+<section class="story-section" id="test-evidence"><div class="section-label">05 / Software engineering</div><div class="story-copy"><h2>Build checks into the analysis workflow.</h2><p>I organized file handling, geometry, mechanics, plotting, and validation into separate modules. Selected-point responses are cached so display changes can reuse the computed complex data. The application exports editable MATLAB figures, parameter tables, and animation movies.</p><div class="gui-evidence"><div><strong>8</strong><span>Analysis views</span></div><div><strong>27 / 27</strong><span>Software checks passed</span></div><div><strong>FIG · CSV · AVI</strong><span>Native export formats</span></div></div><p>The October 6, 2026 verification run covers projection conventions, anatomical point mapping, agreement between point and field calculations, BM reference handling, longitudinal attachment continuity, boundary behavior, and stable animation objects. These checks establish software consistency within the tested cases; biological validation remains part of the lab’s research.</p><div class="evidence-links"><a href="../assets/meaud-gui-verification.txt" target="_blank" rel="noopener"><span>Read the verification record</span><small>MATLAB R2025a · Four test suites · 27 passed</small><b aria-hidden="true">↗</b></a></div></div></section>
+<section class="story-section" id="research-context"><div class="section-label">Research context &amp; contribution</div><div class="story-copy"><h2>An evolving tool for the Meaud Lab.</h2><p>My contribution centers on the GUI, analysis workflows, geometry mapping, projection, and visualization built around the lab’s cochlear model. The longitudinal extension incorporates Tim Kim’s formulation within this application.</p><p>I joined the lab in August 2025 and am also a coauthor of the research abstract <em>“Active cochlear model with longitudinal motion in organ of Corti and dual traveling waves,”</em> with Julien Meaud, Chaehwan Kim, Wei Dong, and Bastian Meenderink.</p></div></section>
 </div>
-</section>
-<section class="story-section" id="section-2">
-<div class="section-label">02 / Analysis interface</div>
-<div class="story-copy">
-<h2>Explore results without rewriting the plotting script.</h2>
-<p>I developed a MATLAB application that loads saved frequency sweeps and lets the user choose a longitudinal location, frequency, viewing angle, and grid resolution.</p>
-<p>The application organizes file handling, mechanics, geometry, plotting, and validation into separate modules. Views include baseline and deformed geometry, projected magnitude and phase, landmark trajectories, frequency sweeps, and displacement along the cochlea.</p>
-<ol class="workflow">
-<li>
-<span>01</span>
-<strong>Load a sweep</strong>
-<p>Saved model output</p>
-</li>
-<li>
-<span>02</span>
-<strong>Choose a view</strong>
-<p>Location, frequency, and projection angle</p>
-</li>
-<li>
-<span>03</span>
-<strong>Inspect the response</strong>
-<p>Geometry, displacement, magnitude, and phase</p>
-</li>
-</ol>
-<p class="scope-note">The application is in development for research analysis. </p>
-</div>
-</section>
-<section class="story-section" id="interface-detail">
-<div class="section-label">Interface design</div>
-<div class="story-copy">
-<h2>Keep the scientific choices visible.</h2>
-<div class="table-scroll engineering-table" tabindex="0" role="region" aria-label="Controls and analysis views in the MATLAB application">
-<table>
-<caption>Controls and analysis views in the MATLAB application</caption>
-<thead>
-<tr>
-<th scope="col">Input or view</th>
-<th scope="col">Research purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th scope="row">Saved frequency sweep</th>
-<td>Select the model output to inspect.</td>
-</tr>
-<tr>
-<th scope="row">Longitudinal location and frequency</th>
-<td>Inspect a specific location and stimulus condition.</td>
-</tr>
-<tr>
-<th scope="row">Viewing angle and grid resolution</th>
-<td>Control the projection and sampled representation.</td>
-</tr>
-<tr>
-<th scope="row">Baseline and deformed geometry</th>
-<td>Inspect how modeled structures move relative to their starting geometry.</td>
-</tr>
-<tr>
-<th scope="row">Magnitude, phase, and landmark trajectories</th>
-<td>Compare response size, timing, and spatial motion.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The application separates loading, mechanics, geometry, plotting, and validation so that an issue can be investigated at the relevant stage. The interface is still in development; research use requires checking the projected outputs against the underlying model calculations.</p>
-</div>
-</section>
-<section class="story-section" id="section-3">
-<div class="section-label">03 / Research contribution</div>
-<div class="story-copy">
-<h2>ARO abstract coauthor.</h2>
-<p>I am a coauthor of the abstract <em>“Active cochlear model with longitudinal motion in organ of Corti and dual traveling waves,”</em> with Julien Meaud, Chaehwan Kim, Wei Dong, and Bastian Meenderink.</p>
-<p>The abstract describes an active finite-element cochlear model incorporating scala-media fluid–tectorial-membrane coupling and three-dimensional outer-hair-cell and Deiters-cell anatomy.</p>
-<p class="source-note">Research abstract · Coauthor</p>
-</div>
-</section>
-
-<section class="story-section" id="test-evidence">
-<div class="section-label">Executed evidence</div>
-<div class="story-copy">
-<h2>Eleven existing helper checks, rerun.</h2>
-<p>The project’s existing MATLAB test suite passed all 11 checks when rerun for this portfolio on 26 September 2026. The checks cover angle conventions, nearest saved location and frequency, stability flags, valid field locations, animation scale, phase unwrapping, material-point mapping, and agreement between selected-point and field calculations.</p>
-<p>The projection helper uses the convention that 0° returns transverse displacement and 90° returns radial displacement. The plot below uses synthetic complex inputs to make the effect of a 45° viewing angle visible.</p>
-<div class="equation">u<sub>projected</sub> = cos(θ) u<sub>transverse</sub> + sin(θ) u<sub>radial</sub>
-</div>
-<p class="scope-note">These are helper-level consistency checks on synthetic fixtures. They do not validate the full cochlear model against experimental data.</p>
-<div class="evidence-links">
-<a href="../assets/cochlear-checks.txt" target="_blank" rel="noopener">
-<span>MATLAB test record</span>
-<small>11 of 11 passed · synthetic fixtures · MATLAB R2025a</small>
-<b aria-hidden="true">↗</b>
-</a>
-</div>
-</div>
-</section>
-<figure class="plot-evidence">
-<a class="zoom" data-zoom href="../assets/cochlear-projection.webp" aria-label="Enlarge: Synthetic displacement projection curves at zero, forty-five and ninety degrees">
-<img src="../assets/cochlear-projection.webp" width="1421" height="810" alt="Synthetic displacement projection curves at zero, forty-five and ninety degrees" loading="lazy">
-<span class="enlarge" aria-hidden="true">↗</span>
-</a>
-<figcaption>Plot generated using the project’s projection helper. Synthetic inputs; not an unpublished cochlear simulation result.</figcaption>
-</figure>
-</div>
-<a class="next-project" href="syringe.html">
-<span class="eyebrow">Next project</span>
-<span>Modeling a 5 mL syringe <span aria-hidden="true">↗</span>
-</span>
-</a>
+<a class="next-project" href="imu.html"><span class="eyebrow">Next project</span><span>A wearable IMU sensor base <span aria-hidden="true">↗</span></span></a>
 </main>
 <footer class="wrap footer">
 <a href="../index.html">David Nedelcov</a>

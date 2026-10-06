@@ -1,0 +1,33 @@
+Cochlear Visualization V2 — software verification
+David Nedelcov / Meaud Lab, Georgia Tech
+Run date: 6 October 2026
+MATLAB R2025a Update 1
+
+Result: 27 passed, 0 failed, 0 incomplete.
+
+Suite                                      Passed
+Core visualization helpers                 11 / 11
+Longitudinal mechanics and plotting         7 / 7
+Best-place selection                       4 / 4
+Point-response display                     5 / 5
+
+Coverage includes:
+- Radial/transverse projection and perpendicular-OHC angle convention.
+- Nearest saved location/frequency and stability flags.
+- Anatomical material-point correspondence between geometries.
+- Agreement between point and field response calculations.
+- Unwrapped phase in cycles and missing-data gaps.
+- BM-relative magnitude and phase, including invalid reference values.
+- Longitudinal channel compatibility and interpolation.
+- BM/RL attachment continuity throughout a cycle.
+- Mesh boundaries, zero motion, fixed axes and nonaccumulating frames.
+- Peak selection with complex values, missing values and file-specific grids.
+- Locator geometry, labels and selected-point markers.
+
+The suites combine synthetic fixtures with the application's saved example.
+They test software consistency and specified numerical/display behavior.
+They do not establish experimental or biological validity of the cochlear model.
+
+Portfolio media: captured from the actual V2 application with separately
+constructed complex displacement signals. These media illustrate the interface;
+they are not unpublished simulation findings or experimental measurements.
