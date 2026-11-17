@@ -301,6 +301,15 @@ img{height:auto}
 .gui-feature .feature-image img{height:auto;object-fit:contain;border:1px solid #c8cdc6;box-shadow:0 10px 28px #223a2920}
 .gui-feature .feature-copy{padding:42px 38px}
 .gui-feature .feature-copy h3{font-size:34px}
+.makeathon-feature .feature-image{display:flex;align-items:center;justify-content:center;background:#efeee8;padding:30px}
+.makeathon-feature .feature-image img{height:470px;width:100%;object-fit:contain}
+.makeathon-cover .zoom{height:580px;background:#efeee8;padding:25px}
+.makeathon-photo{max-width:660px;margin:45px auto}
+.makeathon-photo .zoom{background:#efeee8}
+.makeathon-photo img{max-height:700px;object-fit:contain}
+.makeathon-build .zoom{height:auto;aspect-ratio:3/4}
+.makeathon-build img{height:100%;object-fit:contain}
+@media(max-width:760px){.makeathon-feature .feature-image{padding:22px}.makeathon-feature .feature-image img{height:340px}.makeathon-cover .zoom{height:420px;padding:18px}.makeathon-photo{max-width:100%;margin:30px 0}.makeathon-photo img{max-height:580px}.makeathon-build{grid-template-columns:1fr}}
 .gui-case>h1{max-width:1150px}
 .gui-figure{margin:42px 0}
 .gui-figure .zoom{padding:14px;background:#e4e7e2;border:1px solid var(--line)}
